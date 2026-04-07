@@ -25,15 +25,12 @@ created: '2024-12-03'
 modified: '2026-03-16'
 position: Consuming
 description: >-
-  The US Patent and Trademark Office (USPTO) is responsible for granting patents
-  and registering trademarks to protect intellectual property in the United
-  States. The USPTO examines patent applications to determine if an invention is
-  new, non-obvious, and useful, and grants patents to those that meet the
-  criteria. They also register trademarks, which are words, phrases, symbols, or
-  designs that distinguish goods or services of one entity from another. The
-  USPTO plays a crucial role in promoting innovation and protecting the rights
-  of inventors and businesses by granting patents and trademarks that provide
-  legal protection for their creations.
+  The US Patent and Trademark Office (USPTO) is responsible for granting patents and
+  registering trademarks to protect intellectual property in the United States. The
+  USPTO examines patent applications to determine if an invention is new, non-obvious,
+  and useful, and grants patents to those that meet the criteria. They also register
+  trademarks, which are words, phrases, symbols, or designs that distinguish goods
+  or services of one entity from another.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
