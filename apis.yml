@@ -4,8 +4,7 @@ url: >-
 apis:
   - aid: us-patent-and-trademark-office:us-patent-and-trademark-office
     name: US Patent and Trademark Office
-    tags:
-      - API
+    tags: []
     humanURL: https://developer.uspto.gov/api-catalog
     properties:
       - url: https://developer.uspto.gov/api-catalog
