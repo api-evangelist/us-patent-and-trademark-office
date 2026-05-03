@@ -1,0 +1,29 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.uspto.gov/api/v1/patent/trials/proceedings/IPR2023-00001",
+    "headers": {
+      "X-API-KEY": "YOUR_ODP_API_KEY"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "trialNumber": "IPR2023-00001",
+      "proceedingTypeCode": "IPR",
+      "proceedingStatusTypeName": "FWD Entered",
+      "patentNumber": "9876543",
+      "applicationNumberText": "15678901",
+      "petitionerPartyName": "Tech Corp LLC",
+      "respondentPartyName": "Patent Holdings Inc.",
+      "filingDate": "2023-01-15",
+      "institutionDecisionDate": "2023-07-20",
+      "finalWrittenDecisionDate": "2024-08-01",
+      "claims": [
+        {"claimNumber": 1, "dispositionCode": "UNPATENTABLE"},
+        {"claimNumber": 2, "dispositionCode": "UNPATENTABLE"},
+        {"claimNumber": 3, "dispositionCode": "PATENTABLE"}
+      ]
+    }
+  }
+}

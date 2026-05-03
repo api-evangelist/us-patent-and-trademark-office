@@ -1,0 +1,24 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://tsdrapi.uspto.gov/ts/cd/caseMultiStatus/json?sn=97123456",
+    "headers": {
+      "USPTO-API-KEY": "YOUR_TSDR_API_KEY"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "serialNumber": "97123456",
+      "trademarkStatusCode": "LIVE/APPLICATION/Under Examination",
+      "trademarkStatusDate": "2024-11-15",
+      "markLiteralElements": "CLOUDVERSE",
+      "filingDate": "2022-09-01",
+      "registrationNumber": null,
+      "ownerName": "CloudVerse Technologies Inc.",
+      "ownerAddress": "1234 Innovation Way, San Francisco, CA 94105",
+      "goodsAndServices": "Computer software for cloud computing, cloud storage services, and platform as a service (PaaS).",
+      "internationalClassCodes": ["042"]
+    }
+  }
+}

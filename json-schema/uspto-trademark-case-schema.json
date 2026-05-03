@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/us-patent-and-trademark-office/main/json-schema/uspto-trademark-case-schema.json",
+  "title": "USPTO Trademark Case",
+  "description": "JSON Schema for a USPTO trademark case record from the TSDR API.",
+  "type": "object",
+  "properties": {
+    "serialNumber": {
+      "type": "string",
+      "description": "Trademark application serial number"
+    },
+    "registrationNumber": {
+      "type": ["string", "null"],
+      "description": "Trademark registration number (null if not registered)"
+    },
+    "trademarkStatusCode": {
+      "type": "string",
+      "description": "Current prosecution status description"
+    },
+    "trademarkStatusDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of most recent status change"
+    },
+    "markLiteralElements": {
+      "type": ["string", "null"],
+      "description": "Text elements of the trademark mark"
+    },
+    "filingDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the trademark application was filed"
+    },
+    "registrationDate": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Date the trademark was registered (null if not registered)"
+    },
+    "ownerName": {
+      "type": "string",
+      "description": "Name of the trademark owner/registrant"
+    },
+    "ownerAddress": {
+      "type": ["string", "null"],
+      "description": "Mailing address of the trademark owner"
+    },
+    "goodsAndServices": {
+      "type": "string",
+      "description": "Description of goods and services covered by the mark"
+    },
+    "internationalClassCodes": {
+      "type": "array",
+      "description": "Nice classification international class codes",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": ["serialNumber", "filingDate", "ownerName"]
+}

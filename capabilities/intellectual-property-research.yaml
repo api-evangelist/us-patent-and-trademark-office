@@ -1,0 +1,283 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "USPTO Intellectual Property Research"
+  description: >-
+    Unified capability for intellectual property research, combining patent
+    application search, PTAB trial proceedings, and trademark status retrieval.
+    Supports IP attorneys, researchers, portfolio managers, and compliance teams.
+  tags:
+    - Patents
+    - Trademarks
+    - Intellectual Property
+    - Federal Government
+    - Open Data
+    - Legal Research
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      USPTO_ODP_API_KEY: USPTO_ODP_API_KEY
+      USPTO_TSDR_API_KEY: USPTO_TSDR_API_KEY
+
+capability:
+  consumes:
+    - import: uspto-odp
+      location: ./shared/open-data-portal.yaml
+    - import: uspto-tsdr
+      location: ./shared/tsdr.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: ip-research-api
+      description: "Unified REST API for USPTO intellectual property research."
+      resources:
+        - path: /v1/patents
+          name: patents
+          description: "Patent application search and retrieval"
+          operations:
+            - method: GET
+              name: search-patents
+              description: "Search patent applications by query and filters"
+              call: "uspto-odp.list-patent-applications"
+              with:
+                q: "rest.q"
+                start: "rest.start"
+                rows: "rest.rows"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/patents/{applicationNumberText}
+          name: patent-detail
+          description: "Patent application detail"
+          operations:
+            - method: GET
+              name: get-patent
+              description: "Get full patent application record"
+              call: "uspto-odp.get-patent-application"
+              with:
+                applicationNumberText: "rest.applicationNumberText"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/patents/{applicationNumberText}/documents
+          name: patent-documents
+          description: "Patent application documents"
+          operations:
+            - method: GET
+              name: list-patent-documents
+              description: "List documents for a patent application"
+              call: "uspto-odp.get-patent-application-documents"
+              with:
+                applicationNumberText: "rest.applicationNumberText"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/ptab/proceedings
+          name: ptab-proceedings
+          description: "PTAB inter partes review and post-grant review proceedings"
+          operations:
+            - method: GET
+              name: search-ptab-proceedings
+              description: "Search PTAB trial proceedings"
+              call: "uspto-odp.search-ptab-proceedings"
+              with:
+                q: "rest.q"
+                start: "rest.start"
+                rows: "rest.rows"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/ptab/proceedings/{trialNumber}
+          name: ptab-proceeding
+          description: "PTAB proceeding detail"
+          operations:
+            - method: GET
+              name: get-ptab-proceeding
+              description: "Get PTAB proceeding by trial number"
+              call: "uspto-odp.get-ptab-proceeding"
+              with:
+                trialNumber: "rest.trialNumber"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/ptab/decisions
+          name: ptab-decisions
+          description: "PTAB trial final written decisions"
+          operations:
+            - method: GET
+              name: search-ptab-decisions
+              description: "Search PTAB trial decisions"
+              call: "uspto-odp.search-ptab-decisions"
+              with:
+                q: "rest.q"
+                start: "rest.start"
+                rows: "rest.rows"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/trademarks/{caseId}/status
+          name: trademark-status
+          description: "Trademark case status"
+          operations:
+            - method: GET
+              name: get-trademark-status
+              description: "Get trademark case status by serial or registration number"
+              call: "uspto-tsdr.get-trademark-case-status"
+              with:
+                type: "json"
+                sn: "rest.caseId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/trademarks/{caseId}/documents
+          name: trademark-documents
+          description: "Trademark case documents"
+          operations:
+            - method: GET
+              name: list-trademark-documents
+              description: "List documents for a trademark case"
+              call: "uspto-tsdr.get-case-document-list"
+              with:
+                caseid: "rest.caseId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/datasets
+          name: datasets
+          description: "Bulk data products"
+          operations:
+            - method: GET
+              name: list-datasets
+              description: "Browse available USPTO bulk data products"
+              call: "uspto-odp.search-dataset-products"
+              with:
+                q: "rest.q"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: ip-research-mcp
+      transport: http
+      description: "MCP server for AI-assisted USPTO intellectual property research."
+      tools:
+        - name: search-patent-applications
+          description: "Search USPTO patent applications by keyword, inventor, assignee, or classification"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "uspto-odp.list-patent-applications"
+          with:
+            q: "tools.q"
+            start: "tools.start"
+            rows: "tools.rows"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-patent-application
+          description: "Get complete details for a specific patent application including inventors, assignees, and status"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "uspto-odp.get-patent-application"
+          with:
+            applicationNumberText: "tools.applicationNumberText"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-patent-documents
+          description: "List all office actions, responses, and other documents filed in a patent application"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "uspto-odp.get-patent-application-documents"
+          with:
+            applicationNumberText: "tools.applicationNumberText"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: search-ptab-proceedings
+          description: "Search PTAB inter partes review (IPR), post-grant review (PGR), and covered business method (CBM) proceedings"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "uspto-odp.search-ptab-proceedings"
+          with:
+            q: "tools.q"
+            start: "tools.start"
+            rows: "tools.rows"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-ptab-proceeding
+          description: "Get full details of a PTAB trial including petitioner, respondent, and claim dispositions"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "uspto-odp.get-ptab-proceeding"
+          with:
+            trialNumber: "tools.trialNumber"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: search-ptab-decisions
+          description: "Search PTAB final written decisions and institution decisions"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "uspto-odp.search-ptab-decisions"
+          with:
+            q: "tools.q"
+            start: "tools.start"
+            rows: "tools.rows"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-trademark-status
+          description: "Get the current prosecution status and owner information for a trademark application or registration"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "uspto-tsdr.get-trademark-case-status"
+          with:
+            type: "json"
+            sn: "tools.serialNumber"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-trademark-documents
+          description: "List all documents filed in a trademark case including office actions and responses"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "uspto-tsdr.get-case-document-list"
+          with:
+            caseid: "tools.caseId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-patent-status-codes
+          description: "Get the full list of USPTO patent application status codes and their meanings"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "uspto-odp.list-patent-status-codes"
+          outputParameters:
+            - type: array
+              mapping: "$."
+        - name: browse-bulk-datasets
+          description: "Browse available USPTO bulk data products for economic research and analysis"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "uspto-odp.search-dataset-products"
+          with:
+            q: "tools.q"
+          outputParameters:
+            - type: object
+              mapping: "$."

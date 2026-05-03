@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/us-patent-and-trademark-office/main/json-schema/uspto-patent-application-schema.json",
+  "title": "USPTO Patent Application",
+  "description": "JSON Schema for a USPTO patent application record from the Open Data Portal API.",
+  "type": "object",
+  "properties": {
+    "applicationNumberText": {
+      "type": "string",
+      "description": "Unique patent application number assigned by USPTO",
+      "example": "18123456"
+    },
+    "applicationTypeLabelName": {
+      "type": "string",
+      "description": "Type of patent application",
+      "enum": ["Utility", "Design", "Plant", "Reissue", "Provisional"]
+    },
+    "applicationStatusCode": {
+      "type": "string",
+      "description": "Current prosecution status code"
+    },
+    "applicationStatusDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of the most recent status change"
+    },
+    "applicationFilingDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the application was filed with USPTO"
+    },
+    "grantDate": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Date the patent was issued (null if not yet granted)"
+    },
+    "patentNumber": {
+      "type": ["string", "null"],
+      "description": "Issued patent number (null if not yet granted)"
+    },
+    "inventionTitle": {
+      "type": "string",
+      "description": "Title of the invention as filed"
+    },
+    "inventors": {
+      "type": "array",
+      "description": "List of named inventors",
+      "items": {
+        "$ref": "#/$defs/Inventor"
+      }
+    },
+    "applicants": {
+      "type": "array",
+      "description": "List of applicants/assignees",
+      "items": {
+        "$ref": "#/$defs/Applicant"
+      }
+    },
+    "attorneys": {
+      "type": "array",
+      "description": "List of registered attorneys",
+      "items": {
+        "$ref": "#/$defs/Attorney"
+      }
+    },
+    "classifications": {
+      "type": "array",
+      "description": "Patent classification codes (CPC, USPC)",
+      "items": {
+        "$ref": "#/$defs/Classification"
+      }
+    }
+  },
+  "required": ["applicationNumberText", "applicationFilingDate", "inventionTitle"],
+  "$defs": {
+    "Inventor": {
+      "type": "object",
+      "description": "A named inventor on the patent application",
+      "properties": {
+        "inventorNameText": {
+          "type": "string",
+          "description": "Full name of the inventor"
+        },
+        "inventorCity": {
+          "type": "string",
+          "description": "City of residence"
+        },
+        "inventorStateCode": {
+          "type": "string",
+          "description": "State/province code"
+        },
+        "inventorCountryCode": {
+          "type": "string",
+          "description": "ISO 3166 country code"
+        }
+      },
+      "required": ["inventorNameText"]
+    },
+    "Applicant": {
+      "type": "object",
+      "description": "An applicant or assignee on the patent application",
+      "properties": {
+        "applicantNameText": {
+          "type": "string",
+          "description": "Full name or organization name"
+        },
+        "applicantCity": {
+          "type": "string"
+        },
+        "applicantStateCode": {
+          "type": "string"
+        },
+        "applicantCountryCode": {
+          "type": "string"
+        }
+      },
+      "required": ["applicantNameText"]
+    },
+    "Attorney": {
+      "type": "object",
+      "description": "A registered patent attorney or agent",
+      "properties": {
+        "registrationNumber": {
+          "type": "string",
+          "description": "USPTO registration number"
+        },
+        "fullName": {
+          "type": "string",
+          "description": "Full name of the attorney"
+        }
+      }
+    },
+    "Classification": {
+      "type": "object",
+      "description": "Patent classification code",
+      "properties": {
+        "classificationSymbolText": {
+          "type": "string",
+          "description": "CPC classification symbol"
+        },
+        "uspcSymbolText": {
+          "type": "string",
+          "description": "USPC classification symbol"
+        }
+      }
+    }
+  }
+}

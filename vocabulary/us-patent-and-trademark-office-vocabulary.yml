@@ -1,0 +1,194 @@
+vocabulary:
+  name: US Patent and Trademark Office Vocabulary
+  description: >-
+    Domain vocabulary for the USPTO Open Data Portal, covering patent prosecution,
+    trademark registration, PTAB proceedings, and intellectual property concepts.
+  version: "1.0.0"
+  created: "2026-05-03"
+  domain: Intellectual Property
+
+terms:
+  # Patent Terms
+  - term: Patent Application
+    definition: >-
+      A formal request to the USPTO for a patent to protect an invention, including
+      utility, design, plant, and provisional applications.
+    type: Concept
+    tags: [Patents, Legal]
+
+  - term: Utility Patent
+    definition: >-
+      A patent granted for any new and useful process, machine, manufacture,
+      or composition of matter, or any new and useful improvement thereof.
+    type: Concept
+    tags: [Patents]
+
+  - term: Design Patent
+    definition: >-
+      A patent granted for a new, original, and ornamental design for an article
+      of manufacture.
+    type: Concept
+    tags: [Patents]
+
+  - term: Plant Patent
+    definition: >-
+      A patent granted to anyone who invents or discovers and asexually reproduces
+      any distinct and new variety of plant.
+    type: Concept
+    tags: [Patents]
+
+  - term: Provisional Application
+    definition: >-
+      A lower-cost, informal application that establishes an early filing date but
+      does not mature into an issued patent without a subsequent nonprovisional filing.
+    type: Concept
+    tags: [Patents]
+
+  - term: Patent Prosecution
+    definition: >-
+      The process of communicating with the USPTO to obtain a patent, including
+      filing the application, responding to office actions, and achieving allowance.
+    type: Process
+    tags: [Patents, Legal]
+
+  - term: Prior Art
+    definition: >-
+      Any evidence that an invention was already known or publicly disclosed before
+      the patent application filing date.
+    type: Concept
+    tags: [Patents, Legal]
+
+  - term: Claims
+    definition: >-
+      The legally operative portion of a patent that defines the scope of
+      protection granted by the patent.
+    type: Component
+    tags: [Patents, Legal]
+
+  - term: Patent Term Adjustment (PTA)
+    definition: >-
+      An extension to the standard 20-year patent term to compensate for USPTO
+      processing delays.
+    type: Legal
+    tags: [Patents]
+
+  - term: Patent Assignment
+    definition: >-
+      The transfer of ownership of a patent or patent application from one
+      entity (assignor) to another (assignee).
+    type: Legal
+    tags: [Patents]
+
+  # PTAB Terms
+  - term: PTAB
+    definition: >-
+      The Patent Trial and Appeal Board, an administrative law body within USPTO
+      that adjudicates patent validity disputes and appeals.
+    type: Organization
+    tags: [PTAB, Patents, Legal]
+
+  - term: Inter Partes Review (IPR)
+    definition: >-
+      A PTAB trial proceeding to challenge the validity of an issued patent
+      based on prior art patents or printed publications.
+    type: Legal Proceeding
+    tags: [PTAB, Patents, Legal]
+
+  - term: Post-Grant Review (PGR)
+    definition: >-
+      A PTAB trial proceeding to challenge the validity of an issued patent
+      on any ground of invalidity, filed within 9 months of patent issuance.
+    type: Legal Proceeding
+    tags: [PTAB, Patents, Legal]
+
+  - term: Final Written Decision
+    definition: >-
+      The PTAB's formal written ruling on the patentability of challenged claims
+      following an IPR or PGR trial.
+    type: Legal Document
+    tags: [PTAB, Patents, Legal]
+
+  - term: Institution Decision
+    definition: >-
+      The PTAB's decision on whether to institute a trial proceeding after
+      reviewing the petition.
+    type: Legal Document
+    tags: [PTAB, Patents, Legal]
+
+  # Trademark Terms
+  - term: Trademark
+    definition: >-
+      A word, name, symbol, or device used by a person or organization to
+      distinguish their goods or services from those of others.
+    type: Concept
+    tags: [Trademarks, Legal]
+
+  - term: Service Mark
+    definition: >-
+      A mark used to identify and distinguish services rather than goods.
+    type: Concept
+    tags: [Trademarks, Legal]
+
+  - term: Serial Number
+    definition: >-
+      The unique number assigned to a trademark application upon filing with USPTO.
+    type: Identifier
+    tags: [Trademarks]
+
+  - term: Registration Number
+    definition: >-
+      The number assigned to a trademark upon successful registration on the
+      Principal Register or Supplemental Register.
+    type: Identifier
+    tags: [Trademarks]
+
+  - term: Nice Classification
+    definition: >-
+      The International Classification of Goods and Services (Nice Agreement)
+      used to classify goods and services for trademark registration.
+    type: Standard
+    tags: [Trademarks, Standards]
+
+  - term: TSDR
+    definition: >-
+      Trademark Status and Document Retrieval — the USPTO system for checking
+      the prosecution status and accessing documents for trademark cases.
+    type: System
+    tags: [Trademarks]
+
+  - term: Principal Register
+    definition: >-
+      The primary USPTO trademark register providing full statutory trademark
+      rights and presumption of national ownership.
+    type: Concept
+    tags: [Trademarks, Legal]
+
+  # IP Domain Terms
+  - term: Intellectual Property (IP)
+    definition: >-
+      Creations of the mind — inventions, literary and artistic works, designs,
+      symbols, names, and images — protected by law through patents, copyrights,
+      and trademarks.
+    type: Concept
+    tags: [Intellectual Property]
+
+  - term: Open Data Portal (ODP)
+    definition: >-
+      The USPTO's platform for free public access to patent, trademark, and
+      bulk data through REST APIs.
+    type: System
+    tags: [Open Data, API]
+
+  - term: CPC Classification
+    definition: >-
+      The Cooperative Patent Classification system, a hierarchical patent
+      classification scheme used by USPTO and EPO.
+    type: Standard
+    tags: [Patents, Standards]
+
+  - term: USPC Classification
+    definition: >-
+      The United States Patent Classification system, the original USPTO
+      classification scheme (largely superseded by CPC).
+    type: Standard
+    tags: [Patents, Standards]

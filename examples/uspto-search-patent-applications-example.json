@@ -1,0 +1,77 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.uspto.gov/api/v1/patent/applications/search",
+    "headers": {
+      "X-API-KEY": "YOUR_ODP_API_KEY",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "q": "applicationMetaData.applicationTypeLabelName:Utility AND inventors.inventorNameText:Smith",
+      "dateRangeData": {
+        "startDate": "2023-01-01",
+        "endDate": "2024-12-31",
+        "fieldName": "applicationFilingDate"
+      },
+      "start": 0,
+      "rows": 10
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "count": 2,
+      "patents": [
+        {
+          "applicationNumberText": "18123456",
+          "applicationTypeLabelName": "Utility",
+          "applicationStatusCode": "161",
+          "applicationFilingDate": "2023-03-15",
+          "inventionTitle": "Method and System for Distributed Computing",
+          "inventors": [
+            {
+              "inventorNameText": "Smith, John A.",
+              "inventorCity": "San Jose",
+              "inventorStateCode": "CA",
+              "inventorCountryCode": "US"
+            }
+          ],
+          "applicants": [
+            {
+              "applicantNameText": "Acme Technology Corporation",
+              "applicantCity": "Palo Alto",
+              "applicantStateCode": "CA",
+              "applicantCountryCode": "US"
+            }
+          ]
+        },
+        {
+          "applicationNumberText": "18234567",
+          "applicationTypeLabelName": "Utility",
+          "applicationStatusCode": "250",
+          "applicationFilingDate": "2023-06-20",
+          "patentNumber": "12345678",
+          "grantDate": "2024-08-10",
+          "inventionTitle": "Neural Network Training Optimization",
+          "inventors": [
+            {
+              "inventorNameText": "Smith, Jane B.",
+              "inventorCity": "Austin",
+              "inventorStateCode": "TX",
+              "inventorCountryCode": "US"
+            }
+          ],
+          "applicants": [
+            {
+              "applicantNameText": "University of Texas",
+              "applicantCity": "Austin",
+              "applicantStateCode": "TX",
+              "applicantCountryCode": "US"
+            }
+          ]
+        }
+      ],
+      "requestIdentifier": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+    }
+  }
+}

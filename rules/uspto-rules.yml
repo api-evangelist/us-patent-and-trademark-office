@@ -1,0 +1,87 @@
+extends: "spectral:oas"
+rules:
+  # USPTO-specific path conventions
+  uspto-path-api-version-prefix:
+    description: All USPTO ODP paths must start with /api/v{n}/ prefix
+    message: "Path '{{property}}' must begin with /api/v1/ or /api/v2/"
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/api/v[0-9]+/"
+
+  # USPTO operation IDs must be camelCase
+  uspto-operation-id-camel-case:
+    description: OperationIds should use camelCase convention
+    message: "operationId '{{value}}' should use camelCase"
+    severity: warn
+    given: "$.paths[*][*].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  # API key security must be in place
+  uspto-api-key-security:
+    description: USPTO APIs require API key authentication via X-API-KEY header
+    message: "Operations should reference the ApiKeyAuth security scheme"
+    severity: warn
+    given: "$.paths[*][*]"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          oneOf:
+            - required: ["security"]
+            - not:
+                required: ["security"]
+
+  # Pagination parameters should be present for search operations
+  uspto-search-pagination:
+    description: Search operations should support start/rows pagination parameters
+    message: "POST search operations should document pagination in request body"
+    severity: info
+    given: "$.paths[?(@property.match(/\/search$/))].post"
+    then:
+      function: truthy
+
+  # All paths should have operation summaries
+  uspto-operation-summary-required:
+    description: All operations must have a summary
+    message: "Operation at '{{path}}' is missing a summary"
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: summary
+      function: truthy
+
+  # Response 200 required for all GET operations
+  uspto-get-200-response:
+    description: All GET operations must define a 200 response
+    message: "GET operation at '{{path}}' missing 200 response"
+    severity: error
+    given: "$.paths[*].get"
+    then:
+      field: responses.200
+      function: truthy
+
+  # Tags must be defined
+  uspto-operation-tags:
+    description: Operations must have at least one tag
+    message: "Operation at '{{path}}' has no tags"
+    severity: warn
+    given: "$.paths[*][*]"
+    then:
+      field: tags
+      function: truthy
+
+  # Path parameters must be documented
+  uspto-path-params-documented:
+    description: Path parameters must have description and required=true
+    message: "Path parameter '{{property}}' missing description"
+    severity: warn
+    given: "$.paths[*][*].parameters[?(@.in == 'path')]"
+    then:
+      field: description
+      function: truthy

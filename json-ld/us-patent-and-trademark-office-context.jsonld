@@ -1,0 +1,102 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "patent": "https://data.uspto.gov/vocab/patent/",
+    "trademark": "https://data.uspto.gov/vocab/trademark/",
+    "ptab": "https://data.uspto.gov/vocab/ptab/",
+
+    "PatentApplication": "schema:CreativeWork",
+    "TrademarkRegistration": "schema:Intangible",
+    "PtabProceeding": "schema:LegalService",
+
+    "applicationNumberText": {
+      "@id": "patent:applicationNumber",
+      "@type": "xsd:string"
+    },
+    "applicationTypeLabelName": {
+      "@id": "patent:applicationType",
+      "@type": "xsd:string"
+    },
+    "applicationFilingDate": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:date"
+    },
+    "grantDate": {
+      "@id": "patent:grantDate",
+      "@type": "xsd:date"
+    },
+    "patentNumber": {
+      "@id": "patent:patentNumber",
+      "@type": "xsd:string"
+    },
+    "inventionTitle": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "inventors": {
+      "@id": "schema:author",
+      "@container": "@set"
+    },
+    "inventorNameText": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "applicants": {
+      "@id": "schema:maintainer",
+      "@container": "@set"
+    },
+    "applicantNameText": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+
+    "serialNumber": {
+      "@id": "trademark:serialNumber",
+      "@type": "xsd:string"
+    },
+    "registrationNumber": {
+      "@id": "trademark:registrationNumber",
+      "@type": "xsd:string"
+    },
+    "markLiteralElements": {
+      "@id": "trademark:markText",
+      "@type": "xsd:string"
+    },
+    "registrationDate": {
+      "@id": "schema:datePublished",
+      "@type": "xsd:date"
+    },
+    "ownerName": {
+      "@id": "schema:copyrightHolder",
+      "@type": "xsd:string"
+    },
+    "goodsAndServices": {
+      "@id": "trademark:goodsAndServices",
+      "@type": "xsd:string"
+    },
+    "internationalClassCodes": {
+      "@id": "trademark:internationalClass",
+      "@container": "@set"
+    },
+
+    "trialNumber": {
+      "@id": "ptab:trialNumber",
+      "@type": "xsd:string"
+    },
+    "proceedingTypeCode": {
+      "@id": "ptab:proceedingType",
+      "@type": "xsd:string"
+    },
+    "petitionerPartyName": {
+      "@id": "schema:participant",
+      "@type": "xsd:string"
+    },
+    "respondentPartyName": {
+      "@id": "schema:participant",
+      "@type": "xsd:string"
+    }
+  }
+}

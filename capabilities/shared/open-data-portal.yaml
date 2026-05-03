@@ -1,0 +1,369 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "USPTO Open Data Portal API"
+  description: >-
+    The USPTO Open Data Portal API provides access to patent applications,
+    PTAB trial proceedings, petition decisions, and bulk datasets.
+  tags:
+    - Patents
+    - Trademarks
+    - Intellectual Property
+    - Federal Government
+    - Open Data
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      USPTO_ODP_API_KEY: USPTO_ODP_API_KEY
+
+capability:
+  consumes:
+    - type: http
+      namespace: uspto-odp
+      baseUri: https://api.uspto.gov
+      description: "USPTO Open Data Portal REST API for patent and PTAB data."
+      authentication:
+        type: apikey
+        key: X-API-KEY
+        value: "{{USPTO_ODP_API_KEY}}"
+        placement: header
+      resources:
+        - name: patent-applications
+          path: /api/v1/patent/applications
+          description: "Search and retrieve patent application data"
+          operations:
+            - name: search-patent-applications
+              method: POST
+              description: "Search patent applications by JSON payload"
+              body:
+                type: json
+                data:
+                  q: "{{tools.query}}"
+                  start: "{{tools.start}}"
+                  rows: "{{tools.rows}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: list-patent-applications
+              method: GET
+              description: "Search patent applications by query parameters"
+              inputParameters:
+                - name: q
+                  in: query
+                  type: string
+                  required: false
+                  description: "Search query string"
+                - name: start
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Pagination offset"
+                - name: rows
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Number of results"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: patent-application-detail
+          path: /api/v1/patent/applications/{applicationNumberText}
+          description: "Retrieve specific patent application details"
+          operations:
+            - name: get-patent-application
+              method: GET
+              description: "Get full patent application record"
+              inputParameters:
+                - name: applicationNumberText
+                  in: path
+                  type: string
+                  required: true
+                  description: "Patent application number"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-patent-application-documents
+              method: GET
+              description: "Get documents for a patent application"
+              inputParameters:
+                - name: applicationNumberText
+                  in: path
+                  type: string
+                  required: true
+                  description: "Patent application number"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: patent-status-codes
+          path: /api/v1/patent/status-codes
+          description: "Patent application status codes"
+          operations:
+            - name: list-patent-status-codes
+              method: GET
+              description: "Get all patent application status codes"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: array
+                  value: "$."
+        - name: ptab-proceedings
+          path: /api/v1/patent/trials/proceedings
+          description: "PTAB trial proceedings"
+          operations:
+            - name: search-ptab-proceedings
+              method: GET
+              description: "Search PTAB trial proceedings"
+              inputParameters:
+                - name: q
+                  in: query
+                  type: string
+                  required: false
+                  description: "Search query"
+                - name: start
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Pagination offset"
+                - name: rows
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Number of results"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-ptab-proceeding
+              method: GET
+              description: "Get PTAB trial proceeding by trial number"
+              inputParameters:
+                - name: trialNumber
+                  in: path
+                  type: string
+                  required: true
+                  description: "PTAB trial number (e.g., IPR2023-00001)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: ptab-decisions
+          path: /api/v1/patent/trials/decisions
+          description: "PTAB trial decisions"
+          operations:
+            - name: search-ptab-decisions
+              method: GET
+              description: "Search PTAB trial decisions"
+              inputParameters:
+                - name: q
+                  in: query
+                  type: string
+                  required: false
+                  description: "Search query"
+                - name: start
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Pagination offset"
+                - name: rows
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Number of results"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: bulk-datasets
+          path: /api/v1/datasets/products
+          description: "Bulk dataset products"
+          operations:
+            - name: search-dataset-products
+              method: GET
+              description: "Search available bulk datasets"
+              inputParameters:
+                - name: q
+                  in: query
+                  type: string
+                  required: false
+                  description: "Search query"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: uspto-odp-api
+      resources:
+        - path: /v1/patents
+          name: patents
+          description: "Patent application search and retrieval"
+          operations:
+            - method: GET
+              name: list-patents
+              description: "Search patent applications"
+              call: "uspto-odp.list-patent-applications"
+              with:
+                q: "rest.q"
+                start: "rest.start"
+                rows: "rest.rows"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: search-patents
+              description: "Search patent applications by JSON payload"
+              call: "uspto-odp.search-patent-applications"
+              with:
+                query: "rest.q"
+                start: "rest.start"
+                rows: "rest.rows"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/patents/{applicationNumberText}
+          name: patent
+          description: "Patent application detail"
+          operations:
+            - method: GET
+              name: get-patent
+              description: "Get patent application by number"
+              call: "uspto-odp.get-patent-application"
+              with:
+                applicationNumberText: "rest.applicationNumberText"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/ptab/proceedings
+          name: ptab-proceedings
+          description: "PTAB trial proceedings"
+          operations:
+            - method: GET
+              name: list-ptab-proceedings
+              description: "Search PTAB proceedings"
+              call: "uspto-odp.search-ptab-proceedings"
+              with:
+                q: "rest.q"
+                start: "rest.start"
+                rows: "rest.rows"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/datasets
+          name: datasets
+          description: "Bulk datasets"
+          operations:
+            - method: GET
+              name: list-datasets
+              description: "Search available bulk datasets"
+              call: "uspto-odp.search-dataset-products"
+              with:
+                q: "rest.q"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: uspto-odp-mcp
+      transport: http
+      tools:
+        - name: search-patent-applications
+          description: "Search USPTO patent applications by query, date range, and pagination"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "uspto-odp.list-patent-applications"
+          with:
+            q: "tools.q"
+            start: "tools.start"
+            rows: "tools.rows"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-patent-application
+          description: "Get full details for a specific patent application by application number"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "uspto-odp.get-patent-application"
+          with:
+            applicationNumberText: "tools.applicationNumberText"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-patent-documents
+          description: "List documents filed for a specific patent application"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "uspto-odp.get-patent-application-documents"
+          with:
+            applicationNumberText: "tools.applicationNumberText"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: search-ptab-proceedings
+          description: "Search PTAB inter partes review and post-grant review proceedings"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "uspto-odp.search-ptab-proceedings"
+          with:
+            q: "tools.q"
+            start: "tools.start"
+            rows: "tools.rows"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-ptab-proceeding
+          description: "Get details of a specific PTAB trial proceeding by trial number"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "uspto-odp.get-ptab-proceeding"
+          with:
+            trialNumber: "tools.trialNumber"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: search-ptab-decisions
+          description: "Search PTAB trial final written decisions"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "uspto-odp.search-ptab-decisions"
+          with:
+            q: "tools.q"
+            start: "tools.start"
+            rows: "tools.rows"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-bulk-datasets
+          description: "List available USPTO bulk data products for download"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "uspto-odp.search-dataset-products"
+          with:
+            q: "tools.q"
+          outputParameters:
+            - type: object
+              mapping: "$."

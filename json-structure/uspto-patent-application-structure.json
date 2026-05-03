@@ -1,0 +1,40 @@
+{
+  "name": "USPTO Patent Application",
+  "description": "Structure documentation for USPTO patent application data from the ODP API",
+  "fields": [
+    {"name": "applicationNumberText", "type": "string", "required": true, "description": "Unique application identifier"},
+    {"name": "applicationTypeLabelName", "type": "string", "required": false, "description": "Type: Utility, Design, Plant, etc."},
+    {"name": "applicationStatusCode", "type": "string", "required": false, "description": "Current prosecution status code"},
+    {"name": "applicationStatusDate", "type": "date", "required": false, "description": "Date of most recent status"},
+    {"name": "applicationFilingDate", "type": "date", "required": true, "description": "Filing date"},
+    {"name": "grantDate", "type": "date", "required": false, "description": "Grant date if issued"},
+    {"name": "patentNumber", "type": "string", "required": false, "description": "Patent number if granted"},
+    {"name": "inventionTitle", "type": "string", "required": true, "description": "Title of the invention"},
+    {"name": "inventors", "type": "array[Inventor]", "required": false, "description": "Named inventors"},
+    {"name": "applicants", "type": "array[Applicant]", "required": false, "description": "Applicants/assignees"},
+    {"name": "attorneys", "type": "array[Attorney]", "required": false, "description": "Registered attorneys"},
+    {"name": "classifications", "type": "array[Classification]", "required": false, "description": "CPC/USPC classifications"}
+  ],
+  "nested": {
+    "Inventor": [
+      {"name": "inventorNameText", "type": "string", "required": true},
+      {"name": "inventorCity", "type": "string", "required": false},
+      {"name": "inventorStateCode", "type": "string", "required": false},
+      {"name": "inventorCountryCode", "type": "string", "required": false}
+    ],
+    "Applicant": [
+      {"name": "applicantNameText", "type": "string", "required": true},
+      {"name": "applicantCity", "type": "string", "required": false},
+      {"name": "applicantStateCode", "type": "string", "required": false},
+      {"name": "applicantCountryCode", "type": "string", "required": false}
+    ],
+    "Attorney": [
+      {"name": "registrationNumber", "type": "string", "required": false},
+      {"name": "fullName", "type": "string", "required": false}
+    ],
+    "Classification": [
+      {"name": "classificationSymbolText", "type": "string", "required": false},
+      {"name": "uspcSymbolText", "type": "string", "required": false}
+    ]
+  }
+}

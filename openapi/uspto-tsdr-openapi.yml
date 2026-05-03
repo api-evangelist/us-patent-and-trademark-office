@@ -1,0 +1,307 @@
+openapi: 3.0.1
+info:
+  title: USPTO Trademark Status and Document Retrieval API
+  description: >-
+    The USPTO Trademark Status and Document Retrieval (TSDR) REST API provides
+    programmatic access to trademark case status, associated documents, case
+    images, and related metadata. An API key is required for bulk data downloads.
+  version: 1.0.0
+  contact:
+    name: USPTO
+    email: TEAS@uspto.gov
+    url: https://developer.uspto.gov/api-catalog/tsdr-data-api
+servers:
+  - url: https://tsdrapi.uspto.gov
+security:
+  - ApiKeyAuth: []
+tags:
+  - name: Case Status
+    description: Retrieve trademark case status and metadata
+  - name: Case Documents
+    description: Retrieve trademark case documents and images
+paths:
+  /ts/cd/caseMultiStatus/{type}:
+    get:
+      tags:
+        - Case Status
+      operationId: getMultipleCaseStatus
+      summary: Get Multiple Trademark Case Status
+      description: Retrieve status information for multiple trademark cases at once.
+      parameters:
+        - name: type
+          in: path
+          required: true
+          description: Response format type (json, xml)
+          schema:
+            type: string
+            enum:
+              - json
+              - xml
+        - name: sn
+          in: query
+          description: Serial numbers (comma-separated)
+          schema:
+            type: string
+        - name: rn
+          in: query
+          description: Registration numbers (comma-separated)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Trademark case status information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaseStatusResponse'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden - API key required
+        '404':
+          description: Not Found
+  /ts/cd/casestatus/{caseid}/content.pdf:
+    get:
+      tags:
+        - Case Status
+      operationId: getCaseStatusPdf
+      summary: Get Trademark Case Status as PDF
+      parameters:
+        - name: caseid
+          in: path
+          required: true
+          description: Trademark serial or registration number
+          schema:
+            type: string
+      responses:
+        '200':
+          description: PDF of case status
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: Not Found
+  /ts/cd/casedocs/{caseid}/info:
+    get:
+      tags:
+        - Case Documents
+      operationId: getCaseDocumentsInfo
+      summary: Get Trademark Case Document List
+      description: Retrieve the list of documents associated with a trademark case.
+      parameters:
+        - name: caseid
+          in: path
+          required: true
+          description: Trademark serial or registration number
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Case document list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaseDocumentListResponse'
+        '404':
+          description: Not Found
+  /ts/cd/casedocs/{caseid}/bundle:
+    get:
+      tags:
+        - Case Documents
+      operationId: getCaseDocumentsBundle
+      summary: Get Trademark Case Documents Bundle
+      description: Download all documents for a trademark case as a bundle.
+      parameters:
+        - name: caseid
+          in: path
+          required: true
+          description: Trademark serial or registration number
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Bundle of case documents
+          content:
+            application/zip:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: Not Found
+  /ts/cd/casedoc/{caseid}/{docid}/info:
+    get:
+      tags:
+        - Case Documents
+      operationId: getCaseDocumentInfo
+      summary: Get Trademark Case Document Metadata
+      description: Retrieve metadata for a specific trademark case document.
+      parameters:
+        - name: caseid
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: docid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Document metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaseDocumentInfo'
+        '404':
+          description: Not Found
+  /ts/cd/casedoc/{caseid}/{docid}/content.pdf:
+    get:
+      tags:
+        - Case Documents
+      operationId: getCaseDocumentPdf
+      summary: Get Trademark Case Document as PDF
+      parameters:
+        - name: caseid
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: docid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Document as PDF
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: Not Found
+  /ts/cd/casedoc/{caseid}/{docid}/{pageid}/media:
+    get:
+      tags:
+        - Case Documents
+      operationId: getCaseDocumentPageMedia
+      summary: Get Trademark Case Document Page Image
+      parameters:
+        - name: caseid
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: docid
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: pageid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Document page image
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: Not Found
+  /last-update/info.json:
+    get:
+      tags:
+        - Case Status
+      operationId: getLastUpdateInfo
+      summary: Get TSDR System Last Update Info
+      description: Returns the date/time of the last TSDR data update.
+      security: []
+      responses:
+        '200':
+          description: Last update information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  lastUpdateDate:
+                    type: string
+                    format: date-time
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: USPTO-API-KEY
+  schemas:
+    CaseStatusResponse:
+      type: object
+      description: Trademark case status response
+      properties:
+        trademarkStatusCode:
+          type: string
+          description: Trademark status code
+        trademarkStatusDate:
+          type: string
+          format: date
+          description: Date of current status
+        markLiteralElements:
+          type: string
+          description: Text elements of the trademark mark
+        serialNumber:
+          type: string
+          description: Application serial number
+        registrationNumber:
+          type: string
+          description: Registration number (if registered)
+        filingDate:
+          type: string
+          format: date
+        registrationDate:
+          type: string
+          format: date
+        ownerName:
+          type: string
+        ownerAddress:
+          type: string
+        goodsAndServices:
+          type: string
+          description: Description of goods and services
+        internationalClassCodes:
+          type: array
+          items:
+            type: string
+    CaseDocumentListResponse:
+      type: object
+      description: List of documents for a trademark case
+      properties:
+        serialNumber:
+          type: string
+        documentList:
+          type: array
+          items:
+            $ref: '#/components/schemas/CaseDocumentInfo'
+    CaseDocumentInfo:
+      type: object
+      description: Metadata for a trademark case document
+      properties:
+        documentId:
+          type: string
+        documentDescription:
+          type: string
+        mailDate:
+          type: string
+          format: date
+        numberOfPages:
+          type: integer
+        documentUrl:
+          type: string
+          format: uri
