@@ -1,0 +1,272 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: USPTO Trademark Status and Document Retrieval API — Case Documents
+  description: 'USPTO Trademark Status and Document Retrieval API — Case Documents. 5 operations. Lead operation: Get Trademark
+    Case Document as PDF. Self-contained Naftiko capability covering one Us Patent And Trademark Office business surface.'
+  tags:
+  - Us Patent And Trademark Office
+  - Case Documents
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    US_PATENT_AND_TRADEMARK_OFFICE_API_KEY: US_PATENT_AND_TRADEMARK_OFFICE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: uspto-tsdr-case-documents
+    baseUri: https://tsdrapi.uspto.gov
+    description: USPTO Trademark Status and Document Retrieval API — Case Documents business capability. Self-contained, no
+      shared references.
+    resources:
+    - name: ts-cd-casedoc-caseid-docid-content.pdf
+      path: /ts/cd/casedoc/{caseid}/{docid}/content.pdf
+      operations:
+      - name: getcasedocumentpdf
+        method: GET
+        description: Get Trademark Case Document as PDF
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: caseid
+          in: path
+          type: string
+          required: true
+        - name: docid
+          in: path
+          type: string
+          required: true
+    - name: ts-cd-casedoc-caseid-docid-info
+      path: /ts/cd/casedoc/{caseid}/{docid}/info
+      operations:
+      - name: getcasedocumentinfo
+        method: GET
+        description: Get Trademark Case Document Metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: caseid
+          in: path
+          type: string
+          required: true
+        - name: docid
+          in: path
+          type: string
+          required: true
+    - name: ts-cd-casedoc-caseid-docid-pageid-media
+      path: /ts/cd/casedoc/{caseid}/{docid}/{pageid}/media
+      operations:
+      - name: getcasedocumentpagemedia
+        method: GET
+        description: Get Trademark Case Document Page Image
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: caseid
+          in: path
+          type: string
+          required: true
+        - name: docid
+          in: path
+          type: string
+          required: true
+        - name: pageid
+          in: path
+          type: string
+          required: true
+    - name: ts-cd-casedocs-caseid-bundle
+      path: /ts/cd/casedocs/{caseid}/bundle
+      operations:
+      - name: getcasedocumentsbundle
+        method: GET
+        description: Get Trademark Case Documents Bundle
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: caseid
+          in: path
+          type: string
+          description: Trademark serial or registration number
+          required: true
+    - name: ts-cd-casedocs-caseid-info
+      path: /ts/cd/casedocs/{caseid}/info
+      operations:
+      - name: getcasedocumentsinfo
+        method: GET
+        description: Get Trademark Case Document List
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: caseid
+          in: path
+          type: string
+          description: Trademark serial or registration number
+          required: true
+    authentication:
+      type: apikey
+      key: USPTO-API-KEY
+      value: '{{env.US_PATENT_AND_TRADEMARK_OFFICE_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: uspto-tsdr-case-documents-rest
+    port: 8080
+    description: REST adapter for USPTO Trademark Status and Document Retrieval API — Case Documents. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/ts/cd/casedoc/{caseid}/{docid}/content-pdf
+      name: ts-cd-casedoc-caseid-docid-content-pdf
+      description: REST surface for ts-cd-casedoc-caseid-docid-content.pdf.
+      operations:
+      - method: GET
+        name: getcasedocumentpdf
+        description: Get Trademark Case Document as PDF
+        call: uspto-tsdr-case-documents.getcasedocumentpdf
+        with:
+          caseid: rest.caseid
+          docid: rest.docid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ts/cd/casedoc/{caseid}/{docid}/info
+      name: ts-cd-casedoc-caseid-docid-info
+      description: REST surface for ts-cd-casedoc-caseid-docid-info.
+      operations:
+      - method: GET
+        name: getcasedocumentinfo
+        description: Get Trademark Case Document Metadata
+        call: uspto-tsdr-case-documents.getcasedocumentinfo
+        with:
+          caseid: rest.caseid
+          docid: rest.docid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ts/cd/casedoc/{caseid}/{docid}/{pageid}/media
+      name: ts-cd-casedoc-caseid-docid-pageid-media
+      description: REST surface for ts-cd-casedoc-caseid-docid-pageid-media.
+      operations:
+      - method: GET
+        name: getcasedocumentpagemedia
+        description: Get Trademark Case Document Page Image
+        call: uspto-tsdr-case-documents.getcasedocumentpagemedia
+        with:
+          caseid: rest.caseid
+          docid: rest.docid
+          pageid: rest.pageid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ts/cd/casedocs/{caseid}/bundle
+      name: ts-cd-casedocs-caseid-bundle
+      description: REST surface for ts-cd-casedocs-caseid-bundle.
+      operations:
+      - method: GET
+        name: getcasedocumentsbundle
+        description: Get Trademark Case Documents Bundle
+        call: uspto-tsdr-case-documents.getcasedocumentsbundle
+        with:
+          caseid: rest.caseid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ts/cd/casedocs/{caseid}/info
+      name: ts-cd-casedocs-caseid-info
+      description: REST surface for ts-cd-casedocs-caseid-info.
+      operations:
+      - method: GET
+        name: getcasedocumentsinfo
+        description: Get Trademark Case Document List
+        call: uspto-tsdr-case-documents.getcasedocumentsinfo
+        with:
+          caseid: rest.caseid
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: uspto-tsdr-case-documents-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for USPTO Trademark Status and Document Retrieval API — Case Documents. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: get-trademark-case-document-pdf
+      description: Get Trademark Case Document as PDF
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: uspto-tsdr-case-documents.getcasedocumentpdf
+      with:
+        caseid: tools.caseid
+        docid: tools.docid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-trademark-case-document-metadata
+      description: Get Trademark Case Document Metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: uspto-tsdr-case-documents.getcasedocumentinfo
+      with:
+        caseid: tools.caseid
+        docid: tools.docid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-trademark-case-document-page
+      description: Get Trademark Case Document Page Image
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: uspto-tsdr-case-documents.getcasedocumentpagemedia
+      with:
+        caseid: tools.caseid
+        docid: tools.docid
+        pageid: tools.pageid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-trademark-case-documents-bundle
+      description: Get Trademark Case Documents Bundle
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: uspto-tsdr-case-documents.getcasedocumentsbundle
+      with:
+        caseid: tools.caseid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-trademark-case-document-list
+      description: Get Trademark Case Document List
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: uspto-tsdr-case-documents.getcasedocumentsinfo
+      with:
+        caseid: tools.caseid
+      outputParameters:
+      - type: object
+        mapping: $.

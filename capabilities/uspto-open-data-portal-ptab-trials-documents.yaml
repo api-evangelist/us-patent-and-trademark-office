@@ -1,0 +1,166 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: USPTO Open Data Portal API — PTAB Trials Documents
+  description: 'USPTO Open Data Portal API — PTAB Trials Documents. 3 operations. Lead operation: Search PTAB Trial Documents
+    by JSON Payload. Self-contained Naftiko capability covering one Us Patent And Trademark Office business surface.'
+  tags:
+  - Us Patent And Trademark Office
+  - PTAB Trials Documents
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    US_PATENT_AND_TRADEMARK_OFFICE_API_KEY: US_PATENT_AND_TRADEMARK_OFFICE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: uspto-open-data-portal-ptab-trials-documents
+    baseUri: https://api.uspto.gov
+    description: USPTO Open Data Portal API — PTAB Trials Documents business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-patent-trials-documents-search
+      path: /api/v1/patent/trials/documents/search
+      operations:
+      - name: searchptabdocumentspost
+        method: POST
+        description: Search PTAB Trial Documents by JSON Payload
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: searchptabdocumentsget
+        method: GET
+        description: Search PTAB Trial Documents by Query Parameters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+        - name: start
+          in: query
+          type: integer
+        - name: rows
+          in: query
+          type: integer
+    - name: api-v1-patent-trials-documents-documentIdentifier
+      path: /api/v1/patent/trials/documents/{documentIdentifier}
+      operations:
+      - name: getptabdocument
+        method: GET
+        description: Get PTAB Trial Document by Identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: documentIdentifier
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: X-API-KEY
+      value: '{{env.US_PATENT_AND_TRADEMARK_OFFICE_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: uspto-open-data-portal-ptab-trials-documents-rest
+    port: 8080
+    description: REST adapter for USPTO Open Data Portal API — PTAB Trials Documents. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/v1/patent/trials/documents/search
+      name: api-v1-patent-trials-documents-search
+      description: REST surface for api-v1-patent-trials-documents-search.
+      operations:
+      - method: POST
+        name: searchptabdocumentspost
+        description: Search PTAB Trial Documents by JSON Payload
+        call: uspto-open-data-portal-ptab-trials-documents.searchptabdocumentspost
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: searchptabdocumentsget
+        description: Search PTAB Trial Documents by Query Parameters
+        call: uspto-open-data-portal-ptab-trials-documents.searchptabdocumentsget
+        with:
+          q: rest.q
+          start: rest.start
+          rows: rest.rows
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/patent/trials/documents/{documentidentifier}
+      name: api-v1-patent-trials-documents-documentidentifier
+      description: REST surface for api-v1-patent-trials-documents-documentIdentifier.
+      operations:
+      - method: GET
+        name: getptabdocument
+        description: Get PTAB Trial Document by Identifier
+        call: uspto-open-data-portal-ptab-trials-documents.getptabdocument
+        with:
+          documentIdentifier: rest.documentIdentifier
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: uspto-open-data-portal-ptab-trials-documents-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for USPTO Open Data Portal API — PTAB Trials Documents. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: search-ptab-trial-documents-json
+      description: Search PTAB Trial Documents by JSON Payload
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: uspto-open-data-portal-ptab-trials-documents.searchptabdocumentspost
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-ptab-trial-documents-query
+      description: Search PTAB Trial Documents by Query Parameters
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: uspto-open-data-portal-ptab-trials-documents.searchptabdocumentsget
+      with:
+        q: tools.q
+        start: tools.start
+        rows: tools.rows
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-ptab-trial-document-identifier
+      description: Get PTAB Trial Document by Identifier
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: uspto-open-data-portal-ptab-trials-documents.getptabdocument
+      with:
+        documentIdentifier: tools.documentIdentifier
+      outputParameters:
+      - type: object
+        mapping: $.

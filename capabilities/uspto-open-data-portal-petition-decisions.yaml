@@ -1,0 +1,166 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: USPTO Open Data Portal API — Petition Decisions
+  description: 'USPTO Open Data Portal API — Petition Decisions. 3 operations. Lead operation: Search Petition Decisions by
+    JSON Payload. Self-contained Naftiko capability covering one Us Patent And Trademark Office business surface.'
+  tags:
+  - Us Patent And Trademark Office
+  - Petition Decisions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    US_PATENT_AND_TRADEMARK_OFFICE_API_KEY: US_PATENT_AND_TRADEMARK_OFFICE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: uspto-open-data-portal-petition-decisions
+    baseUri: https://api.uspto.gov
+    description: USPTO Open Data Portal API — Petition Decisions business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-petition-decisions-search
+      path: /api/v1/petition/decisions/search
+      operations:
+      - name: searchpetitiondecisionspost
+        method: POST
+        description: Search Petition Decisions by JSON Payload
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: searchpetitiondecisionsget
+        method: GET
+        description: Search Petition Decisions by Query Parameters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+        - name: start
+          in: query
+          type: integer
+        - name: rows
+          in: query
+          type: integer
+    - name: api-v1-petition-decisions-petitionDecisionRecordIdentifier
+      path: /api/v1/petition/decisions/{petitionDecisionRecordIdentifier}
+      operations:
+      - name: getpetitiondecision
+        method: GET
+        description: Get Petition Decision by Identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: petitionDecisionRecordIdentifier
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: X-API-KEY
+      value: '{{env.US_PATENT_AND_TRADEMARK_OFFICE_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: uspto-open-data-portal-petition-decisions-rest
+    port: 8080
+    description: REST adapter for USPTO Open Data Portal API — Petition Decisions. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/v1/petition/decisions/search
+      name: api-v1-petition-decisions-search
+      description: REST surface for api-v1-petition-decisions-search.
+      operations:
+      - method: POST
+        name: searchpetitiondecisionspost
+        description: Search Petition Decisions by JSON Payload
+        call: uspto-open-data-portal-petition-decisions.searchpetitiondecisionspost
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: searchpetitiondecisionsget
+        description: Search Petition Decisions by Query Parameters
+        call: uspto-open-data-portal-petition-decisions.searchpetitiondecisionsget
+        with:
+          q: rest.q
+          start: rest.start
+          rows: rest.rows
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/petition/decisions/{petitiondecisionrecordidentifier}
+      name: api-v1-petition-decisions-petitiondecisionrecordidentifier
+      description: REST surface for api-v1-petition-decisions-petitionDecisionRecordIdentifier.
+      operations:
+      - method: GET
+        name: getpetitiondecision
+        description: Get Petition Decision by Identifier
+        call: uspto-open-data-portal-petition-decisions.getpetitiondecision
+        with:
+          petitionDecisionRecordIdentifier: rest.petitionDecisionRecordIdentifier
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: uspto-open-data-portal-petition-decisions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for USPTO Open Data Portal API — Petition Decisions. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: search-petition-decisions-json-payload
+      description: Search Petition Decisions by JSON Payload
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: uspto-open-data-portal-petition-decisions.searchpetitiondecisionspost
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-petition-decisions-query-parameters
+      description: Search Petition Decisions by Query Parameters
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: uspto-open-data-portal-petition-decisions.searchpetitiondecisionsget
+      with:
+        q: tools.q
+        start: tools.start
+        rows: tools.rows
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-petition-decision-identifier
+      description: Get Petition Decision by Identifier
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: uspto-open-data-portal-petition-decisions.getpetitiondecision
+      with:
+        petitionDecisionRecordIdentifier: tools.petitionDecisionRecordIdentifier
+      outputParameters:
+      - type: object
+        mapping: $.
