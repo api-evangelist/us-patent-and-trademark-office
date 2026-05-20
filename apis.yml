@@ -1,5 +1,10 @@
 aid: us-patent-and-trademark-office
 url: https://raw.githubusercontent.com/api-evangelist/us-patent-and-trademark-office/refs/heads/main/apis.yml
+common:
+  - type: GitHubOrganization
+    url: https://github.com/USPTO
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/uspto
 apis:
 - aid: us-patent-and-trademark-office:open-data-portal-api
   name: USPTO Open Data Portal API
