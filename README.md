@@ -1,104 +1,81 @@
-# US Patent and Trademark Office
+# US Patent and Trademark Office (us-patent-and-trademark-office)
 
-The US Patent and Trademark Office (USPTO) is responsible for granting patents and registering trademarks to protect intellectual property in the United States. The USPTO examines patent applications to determine if an invention is new, non-obvious, and useful, and grants patents to those that meet the criteria. They also register trademarks, which are words, phrases, symbols, or designs that distinguish goods or services of one entity from another.
+The US Patent and Trademark Office (USPTO) is responsible for granting patents and registering trademarks to protect intellectual property in the United States. The USPTO examines patent applications to determine if an invention is new, non-obvious, and useful, and grants patents to those that meet the criteria. They also register trademarks, which are words, phrases, symbols, or designs that distinguish goods or services of one entity from another. The USPTO Open Data Portal provides free programmatic access to patent applications, PTAB trial proceedings, petition decisions, trademark status, and bulk datasets.
 
-The USPTO Open Data Portal (ODP) provides free programmatic access to patent applications, PTAB trial proceedings, petition decisions, trademark status, and bulk datasets.
-
-**Developer Portal:** https://data.uspto.gov/apis/getting-started  
-**APIs.yml:** https://raw.githubusercontent.com/api-evangelist/us-patent-and-trademark-office/refs/heads/main/apis.yml
-
----
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/us-patent-and-trademark-office/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/us-patent-and-trademark-office/refs/heads/main/apis.yml)
 
 ## Scope
 
-- **Type:** Contract
 - **Position:** Consuming
 - **Access:** 3rd-Party
 
 ## Tags
 
-Federal Government, Patents, Trademarks, Intellectual Property, Open Data
+- Federal Government
+- Patents
+- Trademarks
+- Intellectual Property
+- Open Data
 
 ## Timestamps
 
 - **Created:** 2024-12-03
-- **Modified:** 2026-05-03
-
----
+- **Modified:** 2026-05-19
 
 ## APIs
 
 ### USPTO Open Data Portal API
-Search and retrieve USPTO patent applications, PTAB trial proceedings, petition decisions, and bulk datasets.
 
-- **Base URL:** `https://api.uspto.gov`
-- **Auth:** API Key (`X-API-KEY` header)
-- **OpenAPI:** [openapi/uspto-open-data-portal-openapi.yml](openapi/uspto-open-data-portal-openapi.yml)
-- **Documentation:** https://data.uspto.gov/apis/getting-started
+The USPTO Open Data Portal (ODP) API allows public users to discover, search, and extract USPTO patent, trademark, PTAB trial, petition decision, and bulk dataset information at no cost. Requires an ODP API key passed via the X-API-KEY header.
 
-Key endpoints:
-- `GET/POST /api/v1/patent/applications/search` — Search patent applications
-- `GET /api/v1/patent/applications/{applicationNumberText}` — Get patent application details
-- `GET /api/v1/patent/trials/proceedings/search` — Search PTAB proceedings
-- `GET /api/v1/petition/decisions/search` — Search petition decisions
-- `GET /api/v1/datasets/products/search` — Browse bulk datasets
+- **Human URL:** [https://data.uspto.gov/apis/getting-started](https://data.uspto.gov/apis/getting-started)
 
-### USPTO Trademark Status and Document Retrieval (TSDR) API
-Access trademark case status, prosecution documents, and images.
+#### Tags
 
-- **Base URL:** `https://tsdrapi.uspto.gov`
-- **Auth:** API Key (`USPTO-API-KEY` header)
-- **OpenAPI:** [openapi/uspto-tsdr-openapi.yml](openapi/uspto-tsdr-openapi.yml)
-- **Documentation:** https://developer.uspto.gov/api-catalog/tsdr-data-api
+- Patents
+- Trademarks
+- Intellectual Property
+- Federal Government
+- Open Data
 
-Key endpoints:
-- `GET /ts/cd/caseMultiStatus/{type}` — Get trademark case status
-- `GET /ts/cd/casedocs/{caseid}/info` — List trademark case documents
+#### Properties
 
----
+- [Documentation](https://data.uspto.gov/apis/getting-started)
+- [OpenAPI](https://data.uspto.gov/swagger/swagger.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/us-patent-and-trademark-office/refs/heads/main/openapi/uspto-open-data-portal-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/uspto-open-data-portal.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/uspto-open-data-portal.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/uspto-tsdr.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/uspto-tsdr.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
-## Artifacts
+### USPTO Trademark Status and Document Retrieval API
 
-| Type | Files |
-|------|-------|
-| OpenAPI Specs | [openapi/](openapi/) — 2 specs |
-| Examples | [examples/](examples/) — 3 examples |
-| Spectral Rules | [rules/uspto-rules.yml](rules/uspto-rules.yml) |
-| Naftiko Capabilities | [capabilities/](capabilities/) — 1 workflow + 2 shared |
-| JSON Schema | [json-schema/](json-schema/) — 2 schemas |
-| JSON Structure | [json-structure/](json-structure/) — 1 structure |
-| JSON-LD | [json-ld/](json-ld/) — 1 context |
-| Vocabulary | [vocabulary/](vocabulary/) — 1 vocabulary |
+The Trademark Status and Document Retrieval (TSDR) REST API provides programmatic access to trademark case status, documents, case images, and related metadata. Requires an API key for bulk data downloads.
 
----
+- **Human URL:** [https://developer.uspto.gov/api-catalog/tsdr-data-api](https://developer.uspto.gov/api-catalog/tsdr-data-api)
 
-## Capabilities
+#### Tags
 
-### Shared Definitions
-- [capabilities/shared/open-data-portal.yaml](capabilities/shared/open-data-portal.yaml) — USPTO ODP API (7 operations)
-- [capabilities/shared/tsdr.yaml](capabilities/shared/tsdr.yaml) — USPTO TSDR API (2 operations)
+- Trademarks
+- Intellectual Property
+- Federal Government
+- Open Data
 
-### Workflow Capabilities
-- [capabilities/intellectual-property-research.yaml](capabilities/intellectual-property-research.yaml) — Unified IP research (10 MCP tools)
-  - Patent application search and retrieval
-  - PTAB trial proceedings and decisions
-  - Trademark case status and documents
-  - Bulk dataset access
+#### Properties
 
----
+- [Documentation](https://developer.uspto.gov/api-catalog/tsdr-data-api)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/us-patent-and-trademark-office/refs/heads/main/openapi/uspto-tsdr-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/uspto-open-data-portal.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/uspto-open-data-portal.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/uspto-tsdr.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/uspto-tsdr.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
-## Use Cases
+## Common Properties
 
-- **Patent Research** — Search prior art, track pending applications, monitor competitor filings
-- **Trademark Availability** — Check if a trademark is available before filing
-- **PTAB Monitoring** — Track inter partes review and post-grant review proceedings
-- **IP Portfolio Management** — Monitor a portfolio of patents and trademarks
-- **Legal and Compliance Research** — Research patent validity and trademark ownership
-- **Economic and Academic Research** — Download bulk patent datasets for analysis
-
----
+- [GitHub Organization](https://github.com/USPTO)
+- [LinkedIn](https://www.linkedin.com/company/uspto)
 
 ## Maintainers
 
-**FN:** Kin Lane  
+**FN:** Kin Lane
 **Email:** kin@apievangelist.com

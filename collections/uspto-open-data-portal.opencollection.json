@@ -1,0 +1,742 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USPTO Open Data Portal API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Patent Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Patent Applications by Query Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/applications/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query string supporting boolean operators (AND, OR, NOT), wildcards (*), and exact phrases (\"\")."
+              },
+              {
+                "name": "dateRangeData.startDate",
+                "value": "",
+                "type": "query",
+                "description": "Start date for date range filter (YYYY-MM-DD)"
+              },
+              {
+                "name": "dateRangeData.endDate",
+                "value": "",
+                "type": "query",
+                "description": "End date for date range filter (YYYY-MM-DD)"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Pagination start offset"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to return (max 25)"
+              }
+            ]
+          },
+          "docs": "Search patent applications using query parameters. When no parameters are supplied, the top 25 applications are returned."
+        },
+        {
+          "info": {
+            "name": "Search Patent Applications by JSON Payload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uspto.gov/api/v1/patent/applications/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search patent applications by supplying a JSON request payload with optional query fields, date filters, and pagination options."
+        },
+        {
+          "info": {
+            "name": "Download Patent Application Search Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uspto.gov/api/v1/patent/applications/search/download",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Download a bulk export of patent application search results."
+        },
+        {
+          "info": {
+            "name": "Get Patent Application by Application Number",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/applications/:applicationNumberText",
+            "params": [
+              {
+                "name": "applicationNumberText",
+                "value": "",
+                "type": "path",
+                "description": "Patent application number (e.g., 14412875)"
+              }
+            ]
+          },
+          "docs": "Retrieve full details for a specific patent application."
+        },
+        {
+          "info": {
+            "name": "Get Patent Application Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/applications/:applicationNumberText/meta-data",
+            "params": [
+              {
+                "name": "applicationNumberText",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve metadata for a specific patent application."
+        },
+        {
+          "info": {
+            "name": "Get Patent Application Patent Term Adjustment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/applications/:applicationNumberText/adjustment",
+            "params": [
+              {
+                "name": "applicationNumberText",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Patent Application Patent Term Adjustment"
+        },
+        {
+          "info": {
+            "name": "Get Patent Application Assignment Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/applications/:applicationNumberText/assignment",
+            "params": [
+              {
+                "name": "applicationNumberText",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Patent Application Assignment Data"
+        },
+        {
+          "info": {
+            "name": "Get Patent Application Attorney Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/applications/:applicationNumberText/attorney",
+            "params": [
+              {
+                "name": "applicationNumberText",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Patent Application Attorney Information"
+        },
+        {
+          "info": {
+            "name": "Get Patent Application Continuity Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/applications/:applicationNumberText/continuity",
+            "params": [
+              {
+                "name": "applicationNumberText",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Patent Application Continuity Data"
+        },
+        {
+          "info": {
+            "name": "Get Patent Application Foreign Priority",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/applications/:applicationNumberText/foreign-priority",
+            "params": [
+              {
+                "name": "applicationNumberText",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Patent Application Foreign Priority"
+        },
+        {
+          "info": {
+            "name": "Get Patent Application Transaction History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/applications/:applicationNumberText/transactions",
+            "params": [
+              {
+                "name": "applicationNumberText",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Patent Application Transaction History"
+        },
+        {
+          "info": {
+            "name": "Get Patent Application Documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/applications/:applicationNumberText/documents",
+            "params": [
+              {
+                "name": "applicationNumberText",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Patent Application Documents"
+        },
+        {
+          "info": {
+            "name": "Get Patent Application Status Codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/status-codes"
+          },
+          "docs": "Retrieve the list of all patent application status codes and their descriptions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Bulk Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Bulk Dataset Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/datasets/products/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search available USPTO bulk data products."
+        },
+        {
+          "info": {
+            "name": "Get Bulk Dataset Product by Identifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/datasets/products/:productIdentifier",
+            "params": [
+              {
+                "name": "productIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Bulk Dataset Product by Identifier"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Petition Decisions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Petition Decisions by Query Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/petition/decisions/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search Petition Decisions by Query Parameters"
+        },
+        {
+          "info": {
+            "name": "Search Petition Decisions by JSON Payload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uspto.gov/api/v1/petition/decisions/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search Petition Decisions by JSON Payload"
+        },
+        {
+          "info": {
+            "name": "Get Petition Decision by Identifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/petition/decisions/:petitionDecisionRecordIdentifier",
+            "params": [
+              {
+                "name": "petitionDecisionRecordIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Petition Decision by Identifier"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "PTAB Trials Proceedings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search PTAB Trial Proceedings by Query Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/trials/proceedings/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search PTAB Trial Proceedings by Query Parameters"
+        },
+        {
+          "info": {
+            "name": "Search PTAB Trial Proceedings by JSON Payload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uspto.gov/api/v1/patent/trials/proceedings/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search PTAB Trial Proceedings by JSON Payload"
+        },
+        {
+          "info": {
+            "name": "Get PTAB Trial Proceeding by Trial Number",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/trials/proceedings/:trialNumber",
+            "params": [
+              {
+                "name": "trialNumber",
+                "value": "",
+                "type": "path",
+                "description": "PTAB trial number (e.g., IPR2020-00001)"
+              }
+            ]
+          },
+          "docs": "Get PTAB Trial Proceeding by Trial Number"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "PTAB Trials Decisions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search PTAB Trial Decisions by Query Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/trials/decisions/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search PTAB Trial Decisions by Query Parameters"
+        },
+        {
+          "info": {
+            "name": "Search PTAB Trial Decisions by JSON Payload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uspto.gov/api/v1/patent/trials/decisions/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search PTAB Trial Decisions by JSON Payload"
+        },
+        {
+          "info": {
+            "name": "Get PTAB Trial Decision by Document Identifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/trials/decisions/:documentIdentifier",
+            "params": [
+              {
+                "name": "documentIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get PTAB Trial Decision by Document Identifier"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "PTAB Trials Documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search PTAB Trial Documents by Query Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/trials/documents/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search PTAB Trial Documents by Query Parameters"
+        },
+        {
+          "info": {
+            "name": "Search PTAB Trial Documents by JSON Payload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uspto.gov/api/v1/patent/trials/documents/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search PTAB Trial Documents by JSON Payload"
+        },
+        {
+          "info": {
+            "name": "Get PTAB Trial Document by Identifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/trials/documents/:documentIdentifier",
+            "params": [
+              {
+                "name": "documentIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get PTAB Trial Document by Identifier"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "PTAB Appeals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search PTAB Appeal Decisions by Query Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/appeals/decisions/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search PTAB Appeal Decisions by Query Parameters"
+        },
+        {
+          "info": {
+            "name": "Search PTAB Appeal Decisions by JSON Payload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uspto.gov/api/v1/patent/appeals/decisions/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search PTAB Appeal Decisions by JSON Payload"
+        },
+        {
+          "info": {
+            "name": "Get PTAB Appeal Decision by Document Identifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/appeals/decisions/:documentIdentifier",
+            "params": [
+              {
+                "name": "documentIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get PTAB Appeal Decision by Document Identifier"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "PTAB Interferences",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search PTAB Interference Decisions by Query Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/interferences/decisions/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search PTAB Interference Decisions by Query Parameters"
+        },
+        {
+          "info": {
+            "name": "Search PTAB Interference Decisions by JSON Payload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uspto.gov/api/v1/patent/interferences/decisions/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search PTAB Interference Decisions by JSON Payload"
+        },
+        {
+          "info": {
+            "name": "Get PTAB Interference Decision by Document Identifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/interferences/decisions/:documentIdentifier",
+            "params": [
+              {
+                "name": "documentIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get PTAB Interference Decision by Document Identifier"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
