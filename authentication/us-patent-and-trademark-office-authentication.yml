@@ -1,0 +1,21 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/uspto-open-data-portal-openapi.yml, openapi/uspto-tsdr-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: X-API-KEY
+  sources:
+  - openapi/uspto-open-data-portal-openapi.yml
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: USPTO-API-KEY
+  sources:
+  - openapi/uspto-tsdr-openapi.yml

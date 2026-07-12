@@ -1,6 +1,12 @@
 aid: us-patent-and-trademark-office
 url: https://raw.githubusercontent.com/api-evangelist/us-patent-and-trademark-office/refs/heads/main/apis.yml
 common:
+  - type: DomainSecurity
+    url: security/us-patent-and-trademark-office-domain-security.yml
+  - type: Authentication
+    url: authentication/us-patent-and-trademark-office-authentication.yml
+  - url: https://www.uspto.gov/rss.xml
+    type: Blog
   - type: GitHubOrganization
     url: https://github.com/USPTO
   - type: LinkedIn
