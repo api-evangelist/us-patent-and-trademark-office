@@ -1,6 +1,8 @@
 aid: us-patent-and-trademark-office
 url: https://raw.githubusercontent.com/api-evangelist/us-patent-and-trademark-office/refs/heads/main/apis.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/us-patent-and-trademark-office-agentic-access.yml
   - type: DomainSecurity
     url: security/us-patent-and-trademark-office-domain-security.yml
   - type: Authentication

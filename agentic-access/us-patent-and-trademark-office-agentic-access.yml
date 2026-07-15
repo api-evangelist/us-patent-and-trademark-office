@@ -1,0 +1,474 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/uspto-open-data-portal-openapi.yml, openapi/uspto-tsdr-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 41
+  by_action_class:
+    acting: 8
+    connected: 33
+  by_consequence:
+    write: 8
+    read: 33
+  human_in_the_loop_required: 0
+operations:
+- path: /api/v1/patent/applications/search
+  method: post
+  operationId: searchPatentApplicationsPost
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/patent/applications/search
+  method: get
+  operationId: searchPatentApplicationsGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patent/applications/search/download
+  method: post
+  operationId: downloadPatentApplicationsSearch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/patent/applications/{applicationNumberText}
+  method: get
+  operationId: getPatentApplication
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patent/applications/{applicationNumberText}/meta-data
+  method: get
+  operationId: getPatentApplicationMetaData
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patent/applications/{applicationNumberText}/adjustment
+  method: get
+  operationId: getPatentApplicationAdjustment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patent/applications/{applicationNumberText}/assignment
+  method: get
+  operationId: getPatentApplicationAssignment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patent/applications/{applicationNumberText}/attorney
+  method: get
+  operationId: getPatentApplicationAttorney
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patent/applications/{applicationNumberText}/continuity
+  method: get
+  operationId: getPatentApplicationContinuity
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patent/applications/{applicationNumberText}/foreign-priority
+  method: get
+  operationId: getPatentApplicationForeignPriority
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patent/applications/{applicationNumberText}/transactions
+  method: get
+  operationId: getPatentApplicationTransactions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patent/applications/{applicationNumberText}/documents
+  method: get
+  operationId: getPatentApplicationDocuments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patent/status-codes
+  method: get
+  operationId: getPatentStatusCodes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/datasets/products/search
+  method: get
+  operationId: searchDatasetProducts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/datasets/products/{productIdentifier}
+  method: get
+  operationId: getDatasetProduct
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/petition/decisions/search
+  method: post
+  operationId: searchPetitionDecisionsPost
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/petition/decisions/search
+  method: get
+  operationId: searchPetitionDecisionsGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/petition/decisions/{petitionDecisionRecordIdentifier}
+  method: get
+  operationId: getPetitionDecision
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patent/trials/proceedings/search
+  method: post
+  operationId: searchPtabProceedingsPost
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/patent/trials/proceedings/search
+  method: get
+  operationId: searchPtabProceedingsGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patent/trials/proceedings/{trialNumber}
+  method: get
+  operationId: getPtabProceeding
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patent/trials/decisions/search
+  method: post
+  operationId: searchPtabDecisionsPost
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/patent/trials/decisions/search
+  method: get
+  operationId: searchPtabDecisionsGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patent/trials/decisions/{documentIdentifier}
+  method: get
+  operationId: getPtabDecision
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patent/trials/documents/search
+  method: post
+  operationId: searchPtabDocumentsPost
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/patent/trials/documents/search
+  method: get
+  operationId: searchPtabDocumentsGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patent/trials/documents/{documentIdentifier}
+  method: get
+  operationId: getPtabDocument
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patent/appeals/decisions/search
+  method: post
+  operationId: searchPtabAppealDecisionsPost
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/patent/appeals/decisions/search
+  method: get
+  operationId: searchPtabAppealDecisionsGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patent/appeals/decisions/{documentIdentifier}
+  method: get
+  operationId: getPtabAppealDecision
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patent/interferences/decisions/search
+  method: post
+  operationId: searchPtabInterferenceDecisionsPost
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/patent/interferences/decisions/search
+  method: get
+  operationId: searchPtabInterferenceDecisionsGet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/patent/interferences/decisions/{documentIdentifier}
+  method: get
+  operationId: getPtabInterferenceDecision
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ts/cd/caseMultiStatus/{type}
+  method: get
+  operationId: getMultipleCaseStatus
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ts/cd/casestatus/{caseid}/content.pdf
+  method: get
+  operationId: getCaseStatusPdf
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ts/cd/casedocs/{caseid}/info
+  method: get
+  operationId: getCaseDocumentsInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ts/cd/casedocs/{caseid}/bundle
+  method: get
+  operationId: getCaseDocumentsBundle
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ts/cd/casedoc/{caseid}/{docid}/info
+  method: get
+  operationId: getCaseDocumentInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ts/cd/casedoc/{caseid}/{docid}/content.pdf
+  method: get
+  operationId: getCaseDocumentPdf
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ts/cd/casedoc/{caseid}/{docid}/{pageid}/media
+  method: get
+  operationId: getCaseDocumentPageMedia
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /last-update/info.json
+  method: get
+  operationId: getLastUpdateInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
