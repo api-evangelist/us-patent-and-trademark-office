@@ -1,0 +1,107 @@
+openapi: 3.0.1
+info:
+  title: USPTO Open Data Portal Bulk Datasets Petition Decisions API
+  description: The USPTO Open Data Portal (ODP) API allows public users to discover, search, and extract USPTO patent, trademark, PTAB trial, petition decision, and bulk dataset data at no cost. An ODP API key is required, passed via the X-API-KEY request header.
+  version: 1.0.0
+  contact:
+    name: USPTO
+    email: data@uspto.gov
+    url: https://data.uspto.gov/apis/getting-started
+  x-source-url: https://data.uspto.gov/swagger/swagger.yaml
+servers:
+- url: https://api.uspto.gov
+security:
+- ApiKeyAuth: []
+tags:
+- name: Petition Decisions
+  description: Search and retrieve petition decision records
+paths:
+  /api/v1/petition/decisions/search:
+    post:
+      tags:
+      - Petition Decisions
+      operationId: searchPetitionDecisionsPost
+      summary: Search Petition Decisions by JSON Payload
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                q:
+                  type: string
+                  description: Search query string
+                dateRangeData:
+                  type: object
+                  properties:
+                    startDate:
+                      type: string
+                      format: date
+                    endDate:
+                      type: string
+                      format: date
+      responses:
+        '200':
+          description: Petition decision search results
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Forbidden
+    get:
+      tags:
+      - Petition Decisions
+      operationId: searchPetitionDecisionsGet
+      summary: Search Petition Decisions by Query Parameters
+      parameters:
+      - name: q
+        in: query
+        schema:
+          type: string
+      - name: start
+        in: query
+        schema:
+          type: integer
+          default: 0
+      - name: rows
+        in: query
+        schema:
+          type: integer
+          default: 25
+      responses:
+        '200':
+          description: Petition decision search results
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Forbidden
+  /api/v1/petition/decisions/{petitionDecisionRecordIdentifier}:
+    get:
+      tags:
+      - Petition Decisions
+      operationId: getPetitionDecision
+      summary: Get Petition Decision by Identifier
+      parameters:
+      - name: petitionDecisionRecordIdentifier
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Petition decision details
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY

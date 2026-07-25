@@ -1,0 +1,90 @@
+openapi: 3.0.1
+info:
+  title: USPTO Open Data Portal Bulk Datasets PTAB Interferences API
+  description: The USPTO Open Data Portal (ODP) API allows public users to discover, search, and extract USPTO patent, trademark, PTAB trial, petition decision, and bulk dataset data at no cost. An ODP API key is required, passed via the X-API-KEY request header.
+  version: 1.0.0
+  contact:
+    name: USPTO
+    email: data@uspto.gov
+    url: https://data.uspto.gov/apis/getting-started
+  x-source-url: https://data.uspto.gov/swagger/swagger.yaml
+servers:
+- url: https://api.uspto.gov
+security:
+- ApiKeyAuth: []
+tags:
+- name: PTAB Interferences
+  description: All public decisions filed in PTAB Interferences
+paths:
+  /api/v1/patent/interferences/decisions/search:
+    post:
+      tags:
+      - PTAB Interferences
+      operationId: searchPtabInterferenceDecisionsPost
+      summary: Search PTAB Interference Decisions by JSON Payload
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: PTAB interference decisions search results
+          content:
+            application/json:
+              schema:
+                type: object
+    get:
+      tags:
+      - PTAB Interferences
+      operationId: searchPtabInterferenceDecisionsGet
+      summary: Search PTAB Interference Decisions by Query Parameters
+      parameters:
+      - name: q
+        in: query
+        schema:
+          type: string
+      - name: start
+        in: query
+        schema:
+          type: integer
+          default: 0
+      - name: rows
+        in: query
+        schema:
+          type: integer
+          default: 25
+      responses:
+        '200':
+          description: PTAB interference decisions search results
+          content:
+            application/json:
+              schema:
+                type: object
+  /api/v1/patent/interferences/decisions/{documentIdentifier}:
+    get:
+      tags:
+      - PTAB Interferences
+      operationId: getPtabInterferenceDecision
+      summary: Get PTAB Interference Decision by Document Identifier
+      parameters:
+      - name: documentIdentifier
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: PTAB interference decision details
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY

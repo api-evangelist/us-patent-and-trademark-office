@@ -1,0 +1,93 @@
+openapi: 3.0.1
+info:
+  title: USPTO Open Data Portal Bulk Datasets PTAB Trials Proceedings API
+  description: The USPTO Open Data Portal (ODP) API allows public users to discover, search, and extract USPTO patent, trademark, PTAB trial, petition decision, and bulk dataset data at no cost. An ODP API key is required, passed via the X-API-KEY request header.
+  version: 1.0.0
+  contact:
+    name: USPTO
+    email: data@uspto.gov
+    url: https://data.uspto.gov/apis/getting-started
+  x-source-url: https://data.uspto.gov/swagger/swagger.yaml
+servers:
+- url: https://api.uspto.gov
+security:
+- ApiKeyAuth: []
+tags:
+- name: PTAB Trials Proceedings
+  description: All public PTAB Trial proceedings
+paths:
+  /api/v1/patent/trials/proceedings/search:
+    post:
+      tags:
+      - PTAB Trials Proceedings
+      operationId: searchPtabProceedingsPost
+      summary: Search PTAB Trial Proceedings by JSON Payload
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: PTAB proceedings search results
+          content:
+            application/json:
+              schema:
+                type: object
+        '403':
+          description: Forbidden
+    get:
+      tags:
+      - PTAB Trials Proceedings
+      operationId: searchPtabProceedingsGet
+      summary: Search PTAB Trial Proceedings by Query Parameters
+      parameters:
+      - name: q
+        in: query
+        schema:
+          type: string
+      - name: start
+        in: query
+        schema:
+          type: integer
+          default: 0
+      - name: rows
+        in: query
+        schema:
+          type: integer
+          default: 25
+      responses:
+        '200':
+          description: PTAB proceedings search results
+          content:
+            application/json:
+              schema:
+                type: object
+  /api/v1/patent/trials/proceedings/{trialNumber}:
+    get:
+      tags:
+      - PTAB Trials Proceedings
+      operationId: getPtabProceeding
+      summary: Get PTAB Trial Proceeding by Trial Number
+      parameters:
+      - name: trialNumber
+        in: path
+        required: true
+        description: PTAB trial number (e.g., IPR2020-00001)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: PTAB proceeding details
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Not Found
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY

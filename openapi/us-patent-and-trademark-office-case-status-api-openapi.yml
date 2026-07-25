@@ -1,0 +1,144 @@
+openapi: 3.0.1
+info:
+  title: USPTO Open Data Portal Bulk Datasets Case Status API
+  description: The USPTO Open Data Portal (ODP) API allows public users to discover, search, and extract USPTO patent, trademark, PTAB trial, petition decision, and bulk dataset data at no cost. An ODP API key is required, passed via the X-API-KEY request header.
+  version: 1.0.0
+  contact:
+    name: USPTO
+    email: data@uspto.gov
+    url: https://data.uspto.gov/apis/getting-started
+  x-source-url: https://data.uspto.gov/swagger/swagger.yaml
+servers:
+- url: https://api.uspto.gov
+security:
+- ApiKeyAuth: []
+tags:
+- name: Case Status
+  description: Retrieve trademark case status and metadata
+paths:
+  /ts/cd/caseMultiStatus/{type}:
+    get:
+      tags:
+      - Case Status
+      operationId: getMultipleCaseStatus
+      summary: Get Multiple Trademark Case Status
+      description: Retrieve status information for multiple trademark cases at once.
+      parameters:
+      - name: type
+        in: path
+        required: true
+        description: Response format type (json, xml)
+        schema:
+          type: string
+          enum:
+          - json
+          - xml
+      - name: sn
+        in: query
+        description: Serial numbers (comma-separated)
+        schema:
+          type: string
+      - name: rn
+        in: query
+        description: Registration numbers (comma-separated)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Trademark case status information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaseStatusResponse'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden - API key required
+        '404':
+          description: Not Found
+  /ts/cd/casestatus/{caseid}/content.pdf:
+    get:
+      tags:
+      - Case Status
+      operationId: getCaseStatusPdf
+      summary: Get Trademark Case Status as PDF
+      parameters:
+      - name: caseid
+        in: path
+        required: true
+        description: Trademark serial or registration number
+        schema:
+          type: string
+      responses:
+        '200':
+          description: PDF of case status
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: Not Found
+  /last-update/info.json:
+    get:
+      tags:
+      - Case Status
+      operationId: getLastUpdateInfo
+      summary: Get TSDR System Last Update Info
+      description: Returns the date/time of the last TSDR data update.
+      security: []
+      responses:
+        '200':
+          description: Last update information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  lastUpdateDate:
+                    type: string
+                    format: date-time
+components:
+  schemas:
+    CaseStatusResponse:
+      type: object
+      description: Trademark case status response
+      properties:
+        trademarkStatusCode:
+          type: string
+          description: Trademark status code
+        trademarkStatusDate:
+          type: string
+          format: date
+          description: Date of current status
+        markLiteralElements:
+          type: string
+          description: Text elements of the trademark mark
+        serialNumber:
+          type: string
+          description: Application serial number
+        registrationNumber:
+          type: string
+          description: Registration number (if registered)
+        filingDate:
+          type: string
+          format: date
+        registrationDate:
+          type: string
+          format: date
+        ownerName:
+          type: string
+        ownerAddress:
+          type: string
+        goodsAndServices:
+          type: string
+          description: Description of goods and services
+        internationalClassCodes:
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
