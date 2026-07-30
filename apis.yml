@@ -14,44 +14,137 @@ common:
   - type: LinkedIn
     url: https://www.linkedin.com/company/uspto
 apis:
-  - aid: us-patent-and-trademark-office:open-data-portal-api
-    name: USPTO Open Data Portal API
-    tags:
-      - Patents
-      - Trademarks
-      - Intellectual Property
-      - Federal Government
-      - Open Data
-    humanURL: https://data.uspto.gov/apis/getting-started
-    properties:
-      - url: https://data.uspto.gov/apis/getting-started
-        type: Documentation
-      - url: https://data.uspto.gov/swagger/swagger.yaml
-        type: OpenAPI
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/us-patent-and-trademark-office/refs/heads/main/openapi/uspto-open-data-portal-openapi.yml
-        type: OpenAPI
-    description: >-
-      The USPTO Open Data Portal (ODP) API allows public users to discover, search, and extract USPTO patent, trademark,
-      PTAB trial, petition decision, and bulk dataset information at no cost. Requires an ODP API key passed via the
-      X-API-KEY header.
-  - aid: us-patent-and-trademark-office:tsdr-api
-    name: USPTO Trademark Status and Document Retrieval API
-    tags:
-      - Trademarks
-      - Intellectual Property
-      - Federal Government
-      - Open Data
-    humanURL: https://developer.uspto.gov/api-catalog/tsdr-data-api
-    properties:
-      - url: https://developer.uspto.gov/api-catalog/tsdr-data-api
-        type: Documentation
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/us-patent-and-trademark-office/refs/heads/main/openapi/uspto-tsdr-openapi.yml
-        type: OpenAPI
-    description: >-
-      The Trademark Status and Document Retrieval (TSDR) REST API provides programmatic access to trademark case status,
-      documents, case images, and related metadata. Requires an API key for bulk data downloads.
+- aid: us-patent-and-trademark-office:us-patent-and-trademark-office-bulk-datasets-api
+  name: US Patent and Trademark Office Bulk Datasets API
+  description: Access bulk raw public data from the Chief Economist office
+  humanURL: https://data.uspto.gov/apis/getting-started
+  tags:
+  - Bulk Datasets
+  properties:
+  - type: OpenAPI
+    url: openapi/us-patent-and-trademark-office-bulk-datasets-api-openapi.yml
+  - type: Documentation
+    url: https://data.uspto.gov/apis/getting-started
+  - type: Documentation
+    url: https://developer.uspto.gov/api-catalog/tsdr-data-api
+- aid: us-patent-and-trademark-office:us-patent-and-trademark-office-case-documents-api
+  name: US Patent and Trademark Office Case Documents API
+  description: Retrieve trademark case documents and images
+  humanURL: https://data.uspto.gov/apis/getting-started
+  tags:
+  - Case Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/us-patent-and-trademark-office-case-documents-api-openapi.yml
+  - type: Documentation
+    url: https://data.uspto.gov/apis/getting-started
+  - type: Documentation
+    url: https://developer.uspto.gov/api-catalog/tsdr-data-api
+- aid: us-patent-and-trademark-office:us-patent-and-trademark-office-case-status-api
+  name: US Patent and Trademark Office Case Status API
+  description: Retrieve trademark case status and metadata
+  humanURL: https://data.uspto.gov/apis/getting-started
+  tags:
+  - Case Status
+  properties:
+  - type: OpenAPI
+    url: openapi/us-patent-and-trademark-office-case-status-api-openapi.yml
+  - type: Documentation
+    url: https://data.uspto.gov/apis/getting-started
+  - type: Documentation
+    url: https://developer.uspto.gov/api-catalog/tsdr-data-api
+- aid: us-patent-and-trademark-office:us-patent-and-trademark-office-patent-search-api
+  name: US Patent and Trademark Office Patent Search API
+  description: Search and retrieve patent application data
+  humanURL: https://data.uspto.gov/apis/getting-started
+  tags:
+  - Patent Search
+  properties:
+  - type: OpenAPI
+    url: openapi/us-patent-and-trademark-office-patent-search-api-openapi.yml
+  - type: Documentation
+    url: https://data.uspto.gov/apis/getting-started
+  - type: Documentation
+    url: https://developer.uspto.gov/api-catalog/tsdr-data-api
+- aid: us-patent-and-trademark-office:us-patent-and-trademark-office-petition-decisions-api
+  name: US Patent and Trademark Office Petition Decisions API
+  description: Search and retrieve petition decision records
+  humanURL: https://data.uspto.gov/apis/getting-started
+  tags:
+  - Petition Decisions
+  properties:
+  - type: OpenAPI
+    url: openapi/us-patent-and-trademark-office-petition-decisions-api-openapi.yml
+  - type: Documentation
+    url: https://data.uspto.gov/apis/getting-started
+  - type: Documentation
+    url: https://developer.uspto.gov/api-catalog/tsdr-data-api
+- aid: us-patent-and-trademark-office:us-patent-and-trademark-office-ptab-appeals-api
+  name: US Patent and Trademark Office PTAB Appeals API
+  description: All public decisions filed in PTAB Appeals
+  humanURL: https://data.uspto.gov/apis/getting-started
+  tags:
+  - PTAB Appeals
+  properties:
+  - type: OpenAPI
+    url: openapi/us-patent-and-trademark-office-ptab-appeals-api-openapi.yml
+  - type: Documentation
+    url: https://data.uspto.gov/apis/getting-started
+  - type: Documentation
+    url: https://developer.uspto.gov/api-catalog/tsdr-data-api
+- aid: us-patent-and-trademark-office:us-patent-and-trademark-office-ptab-interferences-api
+  name: US Patent and Trademark Office PTAB Interferences API
+  description: All public decisions filed in PTAB Interferences
+  humanURL: https://data.uspto.gov/apis/getting-started
+  tags:
+  - PTAB Interferences
+  properties:
+  - type: OpenAPI
+    url: openapi/us-patent-and-trademark-office-ptab-interferences-api-openapi.yml
+  - type: Documentation
+    url: https://data.uspto.gov/apis/getting-started
+  - type: Documentation
+    url: https://developer.uspto.gov/api-catalog/tsdr-data-api
+- aid: us-patent-and-trademark-office:us-patent-and-trademark-office-ptab-trials-decisions-api
+  name: US Patent and Trademark Office PTAB Trials Decisions API
+  description: All public decisions filed in PTAB Trials
+  humanURL: https://data.uspto.gov/apis/getting-started
+  tags:
+  - PTAB Trials Decisions
+  properties:
+  - type: OpenAPI
+    url: openapi/us-patent-and-trademark-office-ptab-trials-decisions-api-openapi.yml
+  - type: Documentation
+    url: https://data.uspto.gov/apis/getting-started
+  - type: Documentation
+    url: https://developer.uspto.gov/api-catalog/tsdr-data-api
+- aid: us-patent-and-trademark-office:us-patent-and-trademark-office-ptab-trials-documents-api
+  name: US Patent and Trademark Office PTAB Trials Documents API
+  description: All public documents filed in PTAB Trials
+  humanURL: https://data.uspto.gov/apis/getting-started
+  tags:
+  - PTAB Trials Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/us-patent-and-trademark-office-ptab-trials-documents-api-openapi.yml
+  - type: Documentation
+    url: https://data.uspto.gov/apis/getting-started
+  - type: Documentation
+    url: https://developer.uspto.gov/api-catalog/tsdr-data-api
+- aid: >-
+    us-patent-and-trademark-office:us-patent-and-trademark-office-ptab-trials-proceedings-api
+  name: US Patent and Trademark Office PTAB Trials Proceedings API
+  description: All public PTAB Trial proceedings
+  humanURL: https://data.uspto.gov/apis/getting-started
+  tags:
+  - PTAB Trials Proceedings
+  properties:
+  - type: OpenAPI
+    url: openapi/us-patent-and-trademark-office-ptab-trials-proceedings-api-openapi.yml
+  - type: Documentation
+    url: https://data.uspto.gov/apis/getting-started
+  - type: Documentation
+    url: https://developer.uspto.gov/api-catalog/tsdr-data-api
 name: US Patent and Trademark Office
 tags:
   - Federal Government
@@ -60,7 +153,20 @@ tags:
   - Intellectual Property
   - Open Data
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/us-patent-and-trademark-office.png
 access: 3rd-Party
 created: '2024-12-03'
 modified: '2026-05-19'
