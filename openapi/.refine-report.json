@@ -1,0 +1,32 @@
+{
+  "provider": "us-patent-and-trademark-office",
+  "sources": [
+    "us-patent-and-trademark-office-bulk-datasets-api-openapi.yml",
+    "us-patent-and-trademark-office-case-documents-api-openapi.yml",
+    "us-patent-and-trademark-office-case-status-api-openapi.yml",
+    "us-patent-and-trademark-office-patent-search-api-openapi.yml",
+    "us-patent-and-trademark-office-petition-decisions-api-openapi.yml",
+    "us-patent-and-trademark-office-ptab-appeals-api-openapi.yml",
+    "us-patent-and-trademark-office-ptab-interferences-api-openapi.yml",
+    "us-patent-and-trademark-office-ptab-trials-decisions-api-openapi.yml",
+    "us-patent-and-trademark-office-ptab-trials-documents-api-openapi.yml",
+    "us-patent-and-trademark-office-ptab-trials-proceedings-api-openapi.yml"
+  ],
+  "outputs": [
+    "us-patent-and-trademark-office-bulk-datasets-api-openapi.yml",
+    "us-patent-and-trademark-office-case-documents-api-openapi.yml",
+    "us-patent-and-trademark-office-case-status-api-openapi.yml",
+    "us-patent-and-trademark-office-patent-search-api-openapi.yml",
+    "us-patent-and-trademark-office-petition-decisions-api-openapi.yml",
+    "us-patent-and-trademark-office-ptab-appeals-api-openapi.yml",
+    "us-patent-and-trademark-office-ptab-interferences-api-openapi.yml",
+    "us-patent-and-trademark-office-ptab-trials-decisions-api-openapi.yml",
+    "us-patent-and-trademark-office-ptab-trials-documents-api-openapi.yml",
+    "us-patent-and-trademark-office-ptab-trials-proceedings-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
