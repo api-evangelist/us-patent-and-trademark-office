@@ -1,0 +1,87 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USPTO Open Data Portal Bulk Datasets Case Status API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Case Status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Multiple Trademark Case Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/ts/cd/caseMultiStatus/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Response format type (json, xml)"
+              },
+              {
+                "name": "sn",
+                "value": "",
+                "type": "query",
+                "description": "Serial numbers (comma-separated)"
+              },
+              {
+                "name": "rn",
+                "value": "",
+                "type": "query",
+                "description": "Registration numbers (comma-separated)"
+              }
+            ]
+          },
+          "docs": "Retrieve status information for multiple trademark cases at once."
+        },
+        {
+          "info": {
+            "name": "Get Trademark Case Status as PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/ts/cd/casestatus/:caseid/content.pdf",
+            "params": [
+              {
+                "name": "caseid",
+                "value": "",
+                "type": "path",
+                "description": "Trademark serial or registration number"
+              }
+            ]
+          },
+          "docs": "Get Trademark Case Status as PDF"
+        },
+        {
+          "info": {
+            "name": "Get TSDR System Last Update Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/last-update/info.json"
+          },
+          "docs": "Returns the date/time of the last TSDR data update."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

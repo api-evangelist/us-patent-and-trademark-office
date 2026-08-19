@@ -1,0 +1,904 @@
+{
+  "item": [
+    {
+      "id": "5afc943d-01db-49f9-9d06-e52f65aa1ad5",
+      "name": "Case Documents",
+      "description": {
+        "content": "Retrieve trademark case documents and images",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6f668b55-9b5c-4451-bd5a-53969da98412",
+          "name": "Get Trademark Case Document List",
+          "request": {
+            "name": "Get Trademark Case Document List",
+            "description": {
+              "content": "Retrieve the list of documents associated with a trademark case.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ts",
+                "cd",
+                "casedocs",
+                ":caseid",
+                "info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseid",
+                  "description": "(Required) Trademark serial or registration number"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eb673608-183b-4101-ac73-dcea854b90fa",
+              "name": "Case document list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ts",
+                    "cd",
+                    "casedocs",
+                    ":caseid",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseid",
+                      "description": "(Required) Trademark serial or registration number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"serialNumber\": \"string\",\n  \"documentList\": [\n    {\n      \"documentId\": \"string\",\n      \"documentDescription\": \"string\",\n      \"mailDate\": \"1987-12-03\",\n      \"numberOfPages\": 2890,\n      \"documentUrl\": \"https://vcEKJrXTylzQMHmYO.ztspkna-FKXcokiFvWDxuSdwzN1wOYDQl3XKLit7NpJy9Pirc\"\n    },\n    {\n      \"documentId\": \"string\",\n      \"documentDescription\": \"string\",\n      \"mailDate\": \"2010-10-15\",\n      \"numberOfPages\": 4442,\n      \"documentUrl\": \"https://vzQnarMryfeX.uogrXtZwC+1ze\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "870ed77b-bda0-4d52-a35f-c9c02e2bed26",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ts",
+                    "cd",
+                    "casedocs",
+                    ":caseid",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseid",
+                      "description": "(Required) Trademark serial or registration number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8df6395-95cf-433d-b30d-10ae86cb5c64",
+          "name": "Get Trademark Case Documents Bundle",
+          "request": {
+            "name": "Get Trademark Case Documents Bundle",
+            "description": {
+              "content": "Download all documents for a trademark case as a bundle.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ts",
+                "cd",
+                "casedocs",
+                ":caseid",
+                "bundle"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseid",
+                  "description": "(Required) Trademark serial or registration number"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/zip"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f5a9575d-644e-458e-a6f2-993e22b5c642",
+              "name": "Bundle of case documents",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ts",
+                    "cd",
+                    "casedocs",
+                    ":caseid",
+                    "bundle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseid",
+                      "description": "(Required) Trademark serial or registration number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/zip"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/zip"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a5a6fc1e-f599-4ac2-9411-04990ca28efe",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ts",
+                    "cd",
+                    "casedocs",
+                    ":caseid",
+                    "bundle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseid",
+                      "description": "(Required) Trademark serial or registration number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c2534dc8-8d74-4658-832d-c46b903e75c4",
+          "name": "Get Trademark Case Document Metadata",
+          "request": {
+            "name": "Get Trademark Case Document Metadata",
+            "description": {
+              "content": "Retrieve metadata for a specific trademark case document.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ts",
+                "cd",
+                "casedoc",
+                ":caseid",
+                ":docid",
+                "info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseid",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "docid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "59a9dbdd-78cf-4d14-811f-d4a6475420f1",
+              "name": "Document metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ts",
+                    "cd",
+                    "casedoc",
+                    ":caseid",
+                    ":docid",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseid",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "docid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"documentId\": \"string\",\n  \"documentDescription\": \"string\",\n  \"mailDate\": \"2026-07-22\",\n  \"numberOfPages\": 4119,\n  \"documentUrl\": \"https://QEVtWaUvsxzqB.rowQusMiaO+qZuoTJT7I847txXKhEMXR\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f8d22210-41da-46a4-879f-627c5d9e05c5",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ts",
+                    "cd",
+                    "casedoc",
+                    ":caseid",
+                    ":docid",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseid",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "docid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "13afd773-9dc6-4128-8ac3-218edae24de8",
+          "name": "Get Trademark Case Document as PDF",
+          "request": {
+            "name": "Get Trademark Case Document as PDF",
+            "description": {},
+            "url": {
+              "path": [
+                "ts",
+                "cd",
+                "casedoc",
+                ":caseid",
+                ":docid",
+                "content.pdf"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseid",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "docid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/pdf"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "edead404-a2ec-4a5b-b48c-0f58668f81f4",
+              "name": "Document as PDF",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ts",
+                    "cd",
+                    "casedoc",
+                    ":caseid",
+                    ":docid",
+                    "content.pdf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseid",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "docid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/pdf"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/pdf"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8def6f6b-7861-4eef-8820-63ac91b737c2",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ts",
+                    "cd",
+                    "casedoc",
+                    ":caseid",
+                    ":docid",
+                    "content.pdf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseid",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "docid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5117aa9f-e305-4d43-8357-9d9ec75b4a6d",
+          "name": "Get Trademark Case Document Page Image",
+          "request": {
+            "name": "Get Trademark Case Document Page Image",
+            "description": {},
+            "url": {
+              "path": [
+                "ts",
+                "cd",
+                "casedoc",
+                ":caseid",
+                ":docid",
+                ":pageid",
+                "media"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseid",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "docid",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pageid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/jpeg"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ca2f3e6-1cad-4517-b3b6-2b87c6222769",
+              "name": "Document page image",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ts",
+                    "cd",
+                    "casedoc",
+                    ":caseid",
+                    ":docid",
+                    ":pageid",
+                    "media"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseid",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "docid",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "image/jpeg"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/jpeg"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0c284e7c-bbf7-4b74-84ed-9cd772d3588d",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ts",
+                    "cd",
+                    "casedoc",
+                    ":caseid",
+                    ":docid",
+                    ":pageid",
+                    "media"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseid",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "docid",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.uspto.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "88d49275-c798-4995-8f60-adb2f61446b3",
+    "name": "USPTO Open Data Portal Bulk Datasets Case Documents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The USPTO Open Data Portal (ODP) API allows public users to discover, search, and extract USPTO patent, trademark, PTAB trial, petition decision, and bulk dataset data at no cost. An ODP API key is required, passed via the X-API-KEY request header.\n\nContact Support:\n Name: USPTO\n Email: data@uspto.gov",
+      "type": "text/plain"
+    }
+  }
+}

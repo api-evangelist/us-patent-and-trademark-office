@@ -1,0 +1,578 @@
+{
+  "item": [
+    {
+      "id": "1f6faea9-8df7-4d7d-9b85-984fb9b8c424",
+      "name": "Case Status",
+      "description": {
+        "content": "Retrieve trademark case status and metadata",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7a008879-3407-42cf-8a79-cc90e1a589d4",
+          "name": "Get Multiple Trademark Case Status",
+          "request": {
+            "name": "Get Multiple Trademark Case Status",
+            "description": {
+              "content": "Retrieve status information for multiple trademark cases at once.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ts",
+                "cd",
+                "caseMultiStatus",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sn",
+                  "value": "<string>",
+                  "description": "Serial numbers (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "rn",
+                  "value": "<string>",
+                  "description": "Registration numbers (comma-separated)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) Response format type (json, xml)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c768186d-15ed-4e82-b79d-1e162327befd",
+              "name": "Trademark case status information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ts",
+                    "cd",
+                    "caseMultiStatus",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rn",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Response format type (json, xml)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"trademarkStatusCode\": \"string\",\n  \"trademarkStatusDate\": \"2006-10-28\",\n  \"markLiteralElements\": \"string\",\n  \"serialNumber\": \"string\",\n  \"registrationNumber\": \"string\",\n  \"filingDate\": \"2010-03-01\",\n  \"registrationDate\": \"1949-01-18\",\n  \"ownerName\": \"string\",\n  \"ownerAddress\": \"string\",\n  \"goodsAndServices\": \"string\",\n  \"internationalClassCodes\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe3af4b0-390e-4afb-b82e-57146b416836",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ts",
+                    "cd",
+                    "caseMultiStatus",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rn",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Response format type (json, xml)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "12fadbef-76ec-4d43-a403-7cad437a7d46",
+              "name": "Forbidden - API key required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ts",
+                    "cd",
+                    "caseMultiStatus",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rn",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Response format type (json, xml)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "873c3971-99eb-4800-9675-b55379417402",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ts",
+                    "cd",
+                    "caseMultiStatus",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rn",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Response format type (json, xml)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b70380de-e315-4223-aec8-2e67b6d70952",
+          "name": "Get Trademark Case Status as PDF",
+          "request": {
+            "name": "Get Trademark Case Status as PDF",
+            "description": {},
+            "url": {
+              "path": [
+                "ts",
+                "cd",
+                "casestatus",
+                ":caseid",
+                "content.pdf"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseid",
+                  "description": "(Required) Trademark serial or registration number"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/pdf"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b93b5f00-e7f8-4464-98d9-e0c2cf07769b",
+              "name": "PDF of case status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ts",
+                    "cd",
+                    "casestatus",
+                    ":caseid",
+                    "content.pdf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseid",
+                      "description": "(Required) Trademark serial or registration number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/pdf"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/pdf"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2772cb1c-4244-414e-95f4-c0c0e2202d11",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ts",
+                    "cd",
+                    "casestatus",
+                    ":caseid",
+                    "content.pdf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseid",
+                      "description": "(Required) Trademark serial or registration number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5d033f90-20b3-4fae-a723-f984db3eecce",
+          "name": "Get TSDR System Last Update Info",
+          "request": {
+            "name": "Get TSDR System Last Update Info",
+            "description": {
+              "content": "Returns the date/time of the last TSDR data update.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "last-update",
+                "info.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc691876-71df-4f51-a09b-1a3050a87359",
+              "name": "Last update information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "last-update",
+                    "info.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"lastUpdateDate\": \"2023-03-27T05:50:58.662Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.uspto.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dc4a555a-f1de-4e6c-be37-a3d9f6f9ae00",
+    "name": "USPTO Open Data Portal Bulk Datasets Case Status API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The USPTO Open Data Portal (ODP) API allows public users to discover, search, and extract USPTO patent, trademark, PTAB trial, petition decision, and bulk dataset data at no cost. An ODP API key is required, passed via the X-API-KEY request header.\n\nContact Support:\n Name: USPTO\n Email: data@uspto.gov",
+      "type": "text/plain"
+    }
+  }
+}

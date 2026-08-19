@@ -1,0 +1,138 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USPTO Open Data Portal Bulk Datasets Case Documents API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Case Documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Trademark Case Document List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/ts/cd/casedocs/:caseid/info",
+            "params": [
+              {
+                "name": "caseid",
+                "value": "",
+                "type": "path",
+                "description": "Trademark serial or registration number"
+              }
+            ]
+          },
+          "docs": "Retrieve the list of documents associated with a trademark case."
+        },
+        {
+          "info": {
+            "name": "Get Trademark Case Documents Bundle",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/ts/cd/casedocs/:caseid/bundle",
+            "params": [
+              {
+                "name": "caseid",
+                "value": "",
+                "type": "path",
+                "description": "Trademark serial or registration number"
+              }
+            ]
+          },
+          "docs": "Download all documents for a trademark case as a bundle."
+        },
+        {
+          "info": {
+            "name": "Get Trademark Case Document Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/ts/cd/casedoc/:caseid/:docid/info",
+            "params": [
+              {
+                "name": "caseid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "docid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve metadata for a specific trademark case document."
+        },
+        {
+          "info": {
+            "name": "Get Trademark Case Document as PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/ts/cd/casedoc/:caseid/:docid/content.pdf",
+            "params": [
+              {
+                "name": "caseid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "docid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Trademark Case Document as PDF"
+        },
+        {
+          "info": {
+            "name": "Get Trademark Case Document Page Image",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/ts/cd/casedoc/:caseid/:docid/:pageid/media",
+            "params": [
+              {
+                "name": "caseid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "docid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pageid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Trademark Case Document Page Image"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

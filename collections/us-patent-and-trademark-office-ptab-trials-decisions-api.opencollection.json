@@ -1,0 +1,87 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USPTO Open Data Portal Bulk Datasets PTAB Trials Decisions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PTAB Trials Decisions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search PTAB Trial Decisions by Query Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/trials/decisions/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search PTAB Trial Decisions by Query Parameters"
+        },
+        {
+          "info": {
+            "name": "Search PTAB Trial Decisions by JSON Payload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uspto.gov/api/v1/patent/trials/decisions/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search PTAB Trial Decisions by JSON Payload"
+        },
+        {
+          "info": {
+            "name": "Get PTAB Trial Decision by Document Identifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/trials/decisions/:documentIdentifier",
+            "params": [
+              {
+                "name": "documentIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get PTAB Trial Decision by Document Identifier"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

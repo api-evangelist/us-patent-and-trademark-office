@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USPTO Open Data Portal Bulk Datasets API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bulk Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Bulk Dataset Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/datasets/products/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search available USPTO bulk data products."
+        },
+        {
+          "info": {
+            "name": "Get Bulk Dataset Product by Identifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/datasets/products/:productIdentifier",
+            "params": [
+              {
+                "name": "productIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Bulk Dataset Product by Identifier"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

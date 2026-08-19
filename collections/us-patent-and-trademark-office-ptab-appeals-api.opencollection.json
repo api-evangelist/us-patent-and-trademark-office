@@ -1,0 +1,87 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USPTO Open Data Portal Bulk Datasets PTAB Appeals API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PTAB Appeals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search PTAB Appeal Decisions by Query Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/appeals/decisions/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search PTAB Appeal Decisions by Query Parameters"
+        },
+        {
+          "info": {
+            "name": "Search PTAB Appeal Decisions by JSON Payload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uspto.gov/api/v1/patent/appeals/decisions/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search PTAB Appeal Decisions by JSON Payload"
+        },
+        {
+          "info": {
+            "name": "Get PTAB Appeal Decision by Document Identifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uspto.gov/api/v1/patent/appeals/decisions/:documentIdentifier",
+            "params": [
+              {
+                "name": "documentIdentifier",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get PTAB Appeal Decision by Document Identifier"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
