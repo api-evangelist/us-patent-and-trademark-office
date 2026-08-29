@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: USPTO Open Data Portal Bulk Datasets PTAB Interferences API
+  title: USPTO Open Data Portal PTAB Interferences API
   description: The USPTO Open Data Portal (ODP) API allows public users to discover, search, and extract USPTO patent, trademark, PTAB trial, petition decision, and bulk dataset data at no cost. An ODP API key is required, passed via the X-API-KEY request header.
   version: 1.0.0
   contact:

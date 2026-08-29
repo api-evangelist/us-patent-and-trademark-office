@@ -1,15 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: USPTO Open Data Portal Bulk Datasets Case Documents API
-  description: The USPTO Open Data Portal (ODP) API allows public users to discover, search, and extract USPTO patent, trademark, PTAB trial, petition decision, and bulk dataset data at no cost. An ODP API key is required, passed via the X-API-KEY request header.
+  title: USPTO Trademark Status and Document Retrieval Case Documents API
+  description: The USPTO Trademark Status and Document Retrieval (TSDR) REST API provides programmatic access to trademark case status, associated documents, case images, and related metadata. An API key is required for bulk data downloads.
   version: 1.0.0
   contact:
     name: USPTO
-    email: data@uspto.gov
-    url: https://data.uspto.gov/apis/getting-started
-  x-source-url: https://data.uspto.gov/swagger/swagger.yaml
+    email: TEAS@uspto.gov
+    url: https://developer.uspto.gov/api-catalog/tsdr-data-api
 servers:
-- url: https://api.uspto.gov
+- url: https://tsdrapi.uspto.gov
 security:
 - ApiKeyAuth: []
 tags:
@@ -181,4 +180,4 @@ components:
     ApiKeyAuth:
       type: apiKey
       in: header
-      name: X-API-KEY
+      name: USPTO-API-KEY

@@ -1,32 +1,39 @@
 {
   "provider": "us-patent-and-trademark-office",
   "sources": [
-    "us-patent-and-trademark-office-bulk-datasets-api-openapi.yml",
-    "us-patent-and-trademark-office-case-documents-api-openapi.yml",
-    "us-patent-and-trademark-office-case-status-api-openapi.yml",
-    "us-patent-and-trademark-office-patent-search-api-openapi.yml",
-    "us-patent-and-trademark-office-petition-decisions-api-openapi.yml",
-    "us-patent-and-trademark-office-ptab-appeals-api-openapi.yml",
-    "us-patent-and-trademark-office-ptab-interferences-api-openapi.yml",
-    "us-patent-and-trademark-office-ptab-trials-decisions-api-openapi.yml",
-    "us-patent-and-trademark-office-ptab-trials-documents-api-openapi.yml",
-    "us-patent-and-trademark-office-ptab-trials-proceedings-api-openapi.yml"
+    "_original/uspto-open-data-portal-openapi.yml",
+    "_original/uspto-tsdr-openapi.yml"
   ],
   "outputs": [
     "us-patent-and-trademark-office-bulk-datasets-api-openapi.yml",
-    "us-patent-and-trademark-office-case-documents-api-openapi.yml",
-    "us-patent-and-trademark-office-case-status-api-openapi.yml",
-    "us-patent-and-trademark-office-patent-search-api-openapi.yml",
-    "us-patent-and-trademark-office-petition-decisions-api-openapi.yml",
     "us-patent-and-trademark-office-ptab-appeals-api-openapi.yml",
     "us-patent-and-trademark-office-ptab-interferences-api-openapi.yml",
     "us-patent-and-trademark-office-ptab-trials-decisions-api-openapi.yml",
     "us-patent-and-trademark-office-ptab-trials-documents-api-openapi.yml",
-    "us-patent-and-trademark-office-ptab-trials-proceedings-api-openapi.yml"
+    "us-patent-and-trademark-office-ptab-trials-proceedings-api-openapi.yml",
+    "us-patent-and-trademark-office-patent-search-api-openapi.yml",
+    "us-patent-and-trademark-office-petition-decisions-api-openapi.yml",
+    "us-patent-and-trademark-office-case-documents-api-openapi.yml",
+    "us-patent-and-trademark-office-case-status-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "uspto-open-data-portal-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "uspto-tsdr-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0"
+  ],
+  "skipped": [
+    "us-patent-and-trademark-office-bulk-datasets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "us-patent-and-trademark-office-case-documents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "us-patent-and-trademark-office-case-status-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "us-patent-and-trademark-office-patent-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "us-patent-and-trademark-office-petition-decisions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "us-patent-and-trademark-office-ptab-appeals-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "us-patent-and-trademark-office-ptab-interferences-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "us-patent-and-trademark-office-ptab-trials-decisions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "us-patent-and-trademark-office-ptab-trials-documents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "us-patent-and-trademark-office-ptab-trials-proceedings-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

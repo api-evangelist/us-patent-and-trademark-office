@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: USPTO Open Data Portal Bulk Datasets Patent Search API
+  title: USPTO Open Data Portal Patent Search API
   description: The USPTO Open Data Portal (ODP) API allows public users to discover, search, and extract USPTO patent, trademark, PTAB trial, petition decision, and bulk dataset data at no cost. An ODP API key is required, passed via the X-API-KEY request header.
   version: 1.0.0
   contact:
@@ -329,58 +329,6 @@ paths:
                   type: object
 components:
   schemas:
-    PatentDataResponse:
-      type: object
-      description: Response from patent application search
-      properties:
-        count:
-          type: integer
-          description: Total number of matching records
-        patents:
-          type: array
-          items:
-            $ref: '#/components/schemas/PatentApplicationData'
-        requestIdentifier:
-          type: string
-          description: Unique request identifier for support
-    PatentSearchRequest:
-      type: object
-      description: Request body for patent application search
-      properties:
-        q:
-          type: string
-          description: Search query string with boolean operator support
-        dateRangeData:
-          type: object
-          properties:
-            startDate:
-              type: string
-              format: date
-              description: Start date for filtering (YYYY-MM-DD)
-            endDate:
-              type: string
-              format: date
-              description: End date for filtering (YYYY-MM-DD)
-            fieldName:
-              type: string
-              description: Field to apply the date filter to
-        start:
-          type: integer
-          description: Pagination offset
-          default: 0
-        rows:
-          type: integer
-          description: Number of results (max 25)
-          default: 25
-          maximum: 25
-        sort:
-          type: string
-          description: Sort field and direction (e.g., "applicationFilingDate desc")
-        fields:
-          type: array
-          items:
-            type: string
-          description: Specific fields to return
     PatentApplicationData:
       type: object
       description: Patent application record
@@ -456,6 +404,58 @@ components:
                 type: string
               uspcSymbolText:
                 type: string
+    PatentDataResponse:
+      type: object
+      description: Response from patent application search
+      properties:
+        count:
+          type: integer
+          description: Total number of matching records
+        patents:
+          type: array
+          items:
+            $ref: '#/components/schemas/PatentApplicationData'
+        requestIdentifier:
+          type: string
+          description: Unique request identifier for support
+    PatentSearchRequest:
+      type: object
+      description: Request body for patent application search
+      properties:
+        q:
+          type: string
+          description: Search query string with boolean operator support
+        dateRangeData:
+          type: object
+          properties:
+            startDate:
+              type: string
+              format: date
+              description: Start date for filtering (YYYY-MM-DD)
+            endDate:
+              type: string
+              format: date
+              description: End date for filtering (YYYY-MM-DD)
+            fieldName:
+              type: string
+              description: Field to apply the date filter to
+        start:
+          type: integer
+          description: Pagination offset
+          default: 0
+        rows:
+          type: integer
+          description: Number of results (max 25)
+          default: 25
+          maximum: 25
+        sort:
+          type: string
+          description: Sort field and direction (e.g., "applicationFilingDate desc")
+        fields:
+          type: array
+          items:
+            type: string
+          description: Specific fields to return
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
