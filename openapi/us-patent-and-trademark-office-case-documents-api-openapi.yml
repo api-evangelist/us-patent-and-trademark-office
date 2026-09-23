@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: USPTO Trademark Status and Document Retrieval Case Documents API
+  title: USPTO Trademark Status and Document Retrieval Case…
   description: The USPTO Trademark Status and Document Retrieval (TSDR) REST API provides programmatic access to trademark case status, associated documents, case images, and related metadata. An API key is required for bulk data downloads.
   version: 1.0.0
   contact:

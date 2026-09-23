@@ -22,7 +22,8 @@
   "notes": [
     "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "uspto-open-data-portal-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
-    "uspto-tsdr-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0"
+    "uspto-tsdr-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "us-patent-and-trademark-office-bulk-datasets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
