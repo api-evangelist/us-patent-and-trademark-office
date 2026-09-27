@@ -150,6 +150,16 @@ paths:
           description: Not Found
 components:
   schemas:
+    CaseDocumentListResponse:
+      type: object
+      description: List of documents for a trademark case
+      properties:
+        serialNumber:
+          type: string
+        documentList:
+          type: array
+          items:
+            $ref: '#/components/schemas/CaseDocumentInfo'
     CaseDocumentInfo:
       type: object
       description: Metadata for a trademark case document
@@ -166,16 +176,6 @@ components:
         documentUrl:
           type: string
           format: uri
-    CaseDocumentListResponse:
-      type: object
-      description: List of documents for a trademark case
-      properties:
-        serialNumber:
-          type: string
-        documentList:
-          type: array
-          items:
-            $ref: '#/components/schemas/CaseDocumentInfo'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

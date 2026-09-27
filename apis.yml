@@ -147,7 +147,7 @@ apis:
     url: https://developer.uspto.gov/api-catalog/tsdr-data-api
 name: US Patent and Trademark Office
 tags:
-  - Federal-Government
+  - Federal Government
   - Patents
   - Trademarks
   - Intellectual Property
@@ -158,6 +158,7 @@ tags_raw:
   - Trademarks
   - Intellectual Property
   - Open Data
+  - Federal-Government
 kind: contract
 deliveryModel:
   model: unknown
