@@ -404,20 +404,6 @@ components:
                 type: string
               uspcSymbolText:
                 type: string
-    PatentDataResponse:
-      type: object
-      description: Response from patent application search
-      properties:
-        count:
-          type: integer
-          description: Total number of matching records
-        patents:
-          type: array
-          items:
-            $ref: '#/components/schemas/PatentApplicationData'
-        requestIdentifier:
-          type: string
-          description: Unique request identifier for support
     PatentSearchRequest:
       type: object
       description: Request body for patent application search
@@ -456,6 +442,20 @@ components:
           items:
             type: string
           description: Specific fields to return
+    PatentDataResponse:
+      type: object
+      description: Response from patent application search
+      properties:
+        count:
+          type: integer
+          description: Total number of matching records
+        patents:
+          type: array
+          items:
+            $ref: '#/components/schemas/PatentApplicationData'
+        requestIdentifier:
+          type: string
+          description: Unique request identifier for support
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
