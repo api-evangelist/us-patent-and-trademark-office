@@ -1,4 +1,4 @@
-# US Patent and Trademark Office (us-patent-and-trademark-office)
+# US Patent and Trademark Office
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,80 +66,138 @@
 
 The US Patent and Trademark Office (USPTO) is responsible for granting patents and registering trademarks to protect intellectual property in the United States. The USPTO examines patent applications to determine if an invention is new, non-obvious, and useful, and grants patents to those that meet the criteria. They also register trademarks, which are words, phrases, symbols, or designs that distinguish goods or services of one entity from another. The USPTO Open Data Portal provides free programmatic access to patent applications, PTAB trial proceedings, petition decisions, trademark status, and bulk datasets.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/us-patent-and-trademark-office/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/us-patent-and-trademark-office/refs/heads/main/apis.yml)
+**Areas:** Federal Government · Patents · Trademarks · Intellectual Property · Open Data
 
-## Scope
+## US Patent and Trademark Office on APIs.io
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for US Patent and Trademark Office is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/us-patent-and-trademark-office/](https://apis.io/providers/us-patent-and-trademark-office/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (10)
 
-- Federal Government
-- Patents
-- Trademarks
-- Intellectual Property
-- Open Data
+- [US Patent and Trademark Office Bulk Datasets API](https://apis.io/apis/us-patent-and-trademark-office/us-patent-and-trademark-office-bulk-datasets-api/) — Access bulk raw public data from the Chief Economist office
+- [US Patent and Trademark Office Case Documents API](https://apis.io/apis/us-patent-and-trademark-office/us-patent-and-trademark-office-case-documents-api/) — Retrieve trademark case documents and images
+- [US Patent and Trademark Office Case Status API](https://apis.io/apis/us-patent-and-trademark-office/us-patent-and-trademark-office-case-status-api/) — Retrieve trademark case status and metadata
+- [US Patent and Trademark Office Patent Search API](https://apis.io/apis/us-patent-and-trademark-office/us-patent-and-trademark-office-patent-search-api/) — Search and retrieve patent application data
+- [US Patent and Trademark Office Petition Decisions API](https://apis.io/apis/us-patent-and-trademark-office/us-patent-and-trademark-office-petition-decisions-api/) — Search and retrieve petition decision records
+- [US Patent and Trademark Office PTAB Appeals API](https://apis.io/apis/us-patent-and-trademark-office/us-patent-and-trademark-office-ptab-appeals-api/) — All public decisions filed in PTAB Appeals
+- [US Patent and Trademark Office PTAB Interferences API](https://apis.io/apis/us-patent-and-trademark-office/us-patent-and-trademark-office-ptab-interferences-api/) — All public decisions filed in PTAB Interferences
+- [US Patent and Trademark Office PTAB Trials Decisions API](https://apis.io/apis/us-patent-and-trademark-office/us-patent-and-trademark-office-ptab-trials-decisions-api/) — All public decisions filed in PTAB Trials
+- [US Patent and Trademark Office PTAB Trials Documents API](https://apis.io/apis/us-patent-and-trademark-office/us-patent-and-trademark-office-ptab-trials-documents-api/) — All public documents filed in PTAB Trials
+- [US Patent and Trademark Office PTAB Trials Proceedings API](https://apis.io/apis/us-patent-and-trademark-office/us-patent-and-trademark-office-ptab-trials-proceedings-api/) — All public PTAB Trial proceedings
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-12-03
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### USPTO Open Data Portal API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The USPTO Open Data Portal (ODP) API allows public users to discover, search, and extract USPTO patent, trademark, PTAB trial, petition decision, and bulk dataset information at no cost. Requires an ODP API key passed via the X-API-KEY header.
+- [Us Patent And Trademark Office Agentic Access](https://apis.io/agentic-access/us-patent-and-trademark-office/us-patent-and-trademark-office-agentic-access/)
 
-- **Human URL:** [https://data.uspto.gov/apis/getting-started](https://data.uspto.gov/apis/getting-started)
+#### JSON Schema (2)
 
-#### Tags
+The data models the API reads and writes.
 
-- Patents
-- Trademarks
-- Intellectual Property
-- Federal Government
-- Open Data
+- [USPTO Patent Application](https://apis.io/schemas/us-patent-and-trademark-office/uspto-patent-application/)
+- [USPTO Trademark Case](https://apis.io/schemas/us-patent-and-trademark-office/uspto-trademark-case/)
 
-#### Properties
+#### JSON Structure (1)
 
-- [Documentation](https://data.uspto.gov/apis/getting-started)
-- [OpenAPI](https://data.uspto.gov/swagger/swagger.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/us-patent-and-trademark-office/refs/heads/main/openapi/uspto-open-data-portal-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/uspto-open-data-portal.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/uspto-open-data-portal.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/uspto-tsdr.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/uspto-tsdr.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-### USPTO Trademark Status and Document Retrieval API
+- [Uspto Patent Application Structure](https://apis.io/json-structure/us-patent-and-trademark-office/uspto-patent-application-structure/)
 
-The Trademark Status and Document Retrieval (TSDR) REST API provides programmatic access to trademark case status, documents, case images, and related metadata. Requires an API key for bulk data downloads.
+#### JSON-LD (1)
 
-- **Human URL:** [https://developer.uspto.gov/api-catalog/tsdr-data-api](https://developer.uspto.gov/api-catalog/tsdr-data-api)
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Us Patent And Trademark Office Context](https://apis.io/jsonld/us-patent-and-trademark-office/us-patent-and-trademark-office-context/)
 
-- Trademarks
-- Intellectual Property
-- Federal Government
-- Open Data
+#### Vocabulary (1)
 
-#### Properties
+The provider's domain terms, defined.
 
-- [Documentation](https://developer.uspto.gov/api-catalog/tsdr-data-api)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/us-patent-and-trademark-office/refs/heads/main/openapi/uspto-tsdr-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/uspto-open-data-portal.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/uspto-open-data-portal.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/uspto-tsdr.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/uspto-tsdr.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [US Patent and Trademark Office Vocabulary](https://apis.io/vocabularies/us-patent-and-trademark-office/us-patent-and-trademark-office-vocabulary/)
 
-## Common Properties
+#### Examples (3)
 
-- [GitHub Organization](https://github.com/USPTO)
-- [LinkedIn](https://www.linkedin.com/company/uspto)
+Example requests and responses.
 
-## Maintainers
+- [Uspto Get Ptab Proceeding Example](https://apis.io/examples/us-patent-and-trademark-office/uspto-get-ptab-proceeding-example/)
+- [Uspto Get Trademark Case Status Example](https://apis.io/examples/us-patent-and-trademark-office/uspto-get-trademark-case-status-example/)
+- [Uspto Search Patent Applications Example](https://apis.io/examples/us-patent-and-trademark-office/uspto-search-patent-applications-example/)
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+#### Collections (12)
+
+Postman and Open Collection request collections.
+
+- [USPTO Open Data Portal Bulk Datasets API](https://apis.io/collections/us-patent-and-trademark-office/open-us-patent-and-trademark-office-bulk-datasets-api/)
+- [USPTO Open Data Portal Bulk Datasets Case Documents API](https://apis.io/collections/us-patent-and-trademark-office/open-us-patent-and-trademark-office-case-documents-api/)
+- [USPTO Open Data Portal Bulk Datasets Case Status API](https://apis.io/collections/us-patent-and-trademark-office/open-us-patent-and-trademark-office-case-status-api/)
+- [USPTO Open Data Portal Bulk Datasets Patent Search API](https://apis.io/collections/us-patent-and-trademark-office/open-us-patent-and-trademark-office-patent-search-api/)
+- [USPTO Open Data Portal Bulk Datasets Petition Decisions API](https://apis.io/collections/us-patent-and-trademark-office/open-us-patent-and-trademark-office-petition-decisions-api/)
+- [USPTO Open Data Portal Bulk Datasets PTAB Appeals API](https://apis.io/collections/us-patent-and-trademark-office/open-us-patent-and-trademark-office-ptab-appeals-api/)
+- [USPTO Open Data Portal Bulk Datasets PTAB Interferences API](https://apis.io/collections/us-patent-and-trademark-office/open-us-patent-and-trademark-office-ptab-interferences-api/)
+- [USPTO Open Data Portal Bulk Datasets PTAB Trials Decisions API](https://apis.io/collections/us-patent-and-trademark-office/open-us-patent-and-trademark-office-ptab-trials-decisions-api/)
+- [USPTO Open Data Portal Bulk Datasets PTAB Trials Documents API](https://apis.io/collections/us-patent-and-trademark-office/open-us-patent-and-trademark-office-ptab-trials-documents-api/)
+- [USPTO Open Data Portal Bulk Datasets PTAB Trials Proceedings API](https://apis.io/collections/us-patent-and-trademark-office/open-us-patent-and-trademark-office-ptab-trials-proceedings-api/)
+- [USPTO Open Data Portal API](https://apis.io/collections/us-patent-and-trademark-office/open-uspto-open-data-portal/)
+- [USPTO Trademark Status and Document Retrieval API](https://apis.io/collections/us-patent-and-trademark-office/open-uspto-tsdr/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [US Patent and Trademark Office — jsonschema rules](https://apis.io/rules/us-patent-and-trademark-office/us-patent-and-trademark-office-jsonschema-spectral-rules/)
+- [US Patent and Trademark Office — uspto rules](https://apis.io/rules/us-patent-and-trademark-office/uspto-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Us Patent And Trademark Office Authentication](https://apis.io/security/us-patent-and-trademark-office/us-patent-and-trademark-office-authentication/)
+- [Us Patent And Trademark Office Domain Security](https://apis.io/security/us-patent-and-trademark-office/us-patent-and-trademark-office-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Us Patent And Trademark Office Plans Pricing](https://apis.io/plans/us-patent-and-trademark-office/us-patent-and-trademark-office-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Us Patent And Trademark Office Rate Limits](https://apis.io/rate-limits/us-patent-and-trademark-office/us-patent-and-trademark-office-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Us Patent And Trademark Office Finops](https://apis.io/finops/us-patent-and-trademark-office/us-patent-and-trademark-office-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Blog](https://www.uspto.gov/rss.xml)
+- [GitHub](https://github.com/USPTO)
+
+## API Evangelist rating
+
+**Unrated** — no public website could be reached for this company, so there was almost nothing to measure and nothing a reader could check.
+
+This is not a score of zero. No rating is published for this company. If that is wrong because something public exists that we missed, say so on this repository or email [info@apievangelist.com](mailto:info@apievangelist.com) and it will be re-run — free, and no justification needed.
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for US Patent and Trademark Office: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/us-patent-and-trademark-office/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
